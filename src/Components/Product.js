@@ -62,11 +62,11 @@ const Description = ({ onFormSubmit, onDelete }) => {
       <section className="flex w-100 gap-2">
         <div className="flex flex-col w-3/4 gap-2">
           <input
-            type="number"
+            type="text"
             placeholder="Enter Price"
             value={enteredAmount}
             onChange={amountChangeHandler}
-            step="0.01"
+            min="0"
             className="form-control"
           />
         </div>
@@ -77,6 +77,7 @@ const Description = ({ onFormSubmit, onDelete }) => {
             value={enteredQuantity}
             onChange={quantityChangeHandler}
             step="1"
+            min="0"
             className="form-control"
           />
           {/* <button
