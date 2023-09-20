@@ -7,6 +7,7 @@ import Home from './Components/Home';
 function App() {
   return (
     <div className=" bg-black h-screen ">
+      
       <Home />
     </div>
   );

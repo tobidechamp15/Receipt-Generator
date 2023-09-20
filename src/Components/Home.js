@@ -68,21 +68,21 @@ function Home() {
     <div className="flex justify-center items-center h-fit flex-col w-full">
       <div className="flex flex-col gap-2 p-[5%] w-full  h-fit md:w-3/4 bg-gray-300 md:rounded-3xl">
         {/* ... (Company and Customer input fields) */}
-        <div className="flex flex-col bg--200 rounded-md w-full gap-10  p-3 ">
-          <p className="text-3xl">Your Company name</p>
+        <div className="flex flex-col bg--200 rounded-md w-full gap-3   ">
+          <p className="text-xl">Your Company name</p>
           <input
             type="text"
             placeholder="Enter company name"
-            className=" p-3 rounded=md outline-none bg-gray-200 form-control"
+            className="  rounded=md outline-none bg-gray-200 form-control"
           />
         </div>
-        <div className="flex flex-col bg--200 rounded-md w-full  gap-10 p-3 ">
-          <p>The Customer's name</p>
+        <div className="flex flex-col bg--200 rounded-md w-full  gap-3 ">
+          <p >The Customer's name</p>
 
           <input
             type="text"
             placeholder="Enter customer name"
-            className=" p-3 rounded=md outline-none bg-gray-200 text-lg placeholder:text-black form-control"
+            className="  rounded=md outline-none bg-gray-200 text-lg placeholder:text-black form-control"
           />
         </div>
         {Products.map((description, index) => (
