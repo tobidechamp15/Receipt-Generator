@@ -2,7 +2,7 @@ import React from 'react';
 
 const TotalAmount = ({ descriptionValues }) => {
   // Add curly braces for the component function
-  console.log(descriptionValues);
+
   let totalAmount = 0;
 
   descriptionValues.map((values, index) => {
