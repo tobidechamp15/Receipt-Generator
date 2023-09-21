@@ -9,9 +9,9 @@ import Login from './Components/Login';
 function App() {
   return (
     <div className=" bg-black h-screen ">
-      {/* <Signup /> */}
+      <Signup />
       {/* <Login /> */}
-      <Home />
+      {/* <Home /> */}
     </div>
   );
 }

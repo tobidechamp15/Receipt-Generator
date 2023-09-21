@@ -1,7 +1,11 @@
 import React from "react";
 import "./Signup.css";
+import { Link } from "react-router-dom";
 
 function Signup() {
+
+
+
   return (
     <div className="container bg-gray-300">
       <div className="p-5 Signup-form">
@@ -62,6 +66,15 @@ function Signup() {
 
           <div className="d-flex justify-content-center align-items-center">
             <button className="btn btn-primary col-md-4">Sign up</button>
+          </div>
+          <div className="row justify-content-center align-items-center">
+            <div className="col-md-3">
+              <a href="./Home.js">
+                <p>
+                  Already have an account? <Link to='/login' className="text-primary">Login</Link>
+                </p>
+              </a>
+            </div>
           </div>
         </form>
       </div>
