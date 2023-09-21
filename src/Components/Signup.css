@@ -1,0 +1,16 @@
+/* .Signup-form{
+    border: 2px solid red;
+} */
+
+.Signup-form h1{
+    font-size: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
