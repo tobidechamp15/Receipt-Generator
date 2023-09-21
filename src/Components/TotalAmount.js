@@ -26,7 +26,11 @@ const TotalAmount = ({ descriptionValues }) => {
           <strong className="flex gap-3 items-center justify-center">
             <span>Total :</span>
             {/* <span>#{totalAmount.toFixed(2)} </span> */}
-            <span>{formatter.format(totalAmount)}</span>
+            <span>
+              {isNaN(totalAmount)
+                ? '0.00'
+                : ` #${totalAmount.toFixed(2)}`}
+            </span>
           </strong>
         </span>
       </div>

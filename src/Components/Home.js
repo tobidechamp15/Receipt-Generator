@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Description from './Product';
 import Receipt from './Receipt';
 import TotalAmount from './TotalAmount';
-
 import Navbar from './Navbar';
 
 function Home() {
@@ -55,7 +54,7 @@ function Home() {
         <div className="flex flex-col gap-2 p-[5%] w-full  h-fit md:w-3/4 lg:w-1/3 bg-gray-300 md:rounded-3xl">
           {/* ... (Company and Customer input fields) */}
           <div className="flex flex-col bg--200 rounded-md w-full gap-3   ">
-            <p className="text-xl">Customers name</p>
+            <p className="text-xl ps-6 font-bold">Customers name</p>
             <input
               type="text"
               value={customerName}
@@ -65,7 +64,7 @@ function Home() {
             />
           </div>
           <div className="flex flex-col bg--200 rounded-md w-full  gap-3 ">
-            <p>Address</p>
+            <p className="ps-6 font-bold text-xl">Address</p>
 
             <input
               type="text"
