@@ -65,7 +65,7 @@ function Signup() {
           <h3>Receipt Generator</h3>
           <h3>
             <span className="hide">Already have an account? </span>
-            <span className="login-button">
+            <span className="login-button btn btn-outline-primary">
               <Link to="/login">Log in</Link>
             </span>
           </h3>
@@ -117,10 +117,7 @@ function Signup() {
               </div>
             </div>
             <div className="py-4 d-flex justify-content-center align-items-center">
-              <button
-                className="btn btn-primary"
-                type="submit"
-              >
+              <button className="btn btn-outline-primary" type="submit">
                 Sign up
               </button>
             </div>
