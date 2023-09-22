@@ -13,6 +13,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import Receipt from "./Components/Receipt";
 
 // Create a router
 const router = createBrowserRouter([
@@ -24,13 +25,23 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element:<Login />,
+    element: <Login />,
   },
   {
-    path:"/home",
+    path: '/home',
     element: <Home />,
-  }
-])
+  },
+  {
+    path: '/home/receipt',
+    element: 
+      <Receipt
+        // descriptionValues={descriptionValues}
+        // customerName={customerName}
+        // address={address}
+      />,
+    
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);
