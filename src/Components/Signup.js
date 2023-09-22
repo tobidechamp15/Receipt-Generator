@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import pic from "../pic.svg"
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 
-
-
-
-
 function Signup() {
   const [formData, setFormData] = useState({
     username: '',
@@ -29,7 +25,7 @@ function Signup() {
     e.preventDefault()
     const validationErrors = {}
     if(!formData.username.trim()) {
-      validationErrors.username = "username is required"
+      validationErrors.username = "Username is required"
     }
 
     if(!formData.email.trim()) {
@@ -59,7 +55,7 @@ function Signup() {
 
   
   return (
-    <div className="conatainer">
+    <div className="conatainer container-fluid">
       <div className="left">
         <div className="nav">
           <h3>Receipt Generator</h3>
@@ -71,10 +67,20 @@ function Signup() {
           </h3>
         </div>
 
-        <div className="control">
-          <div className="title">Sign Up</div>
+        <div className="control ">
+          <div className="title mb-2">
+            <div className="flex flex-col  justify-center items-center">
 
-          <form className="form-body" onSubmit={handleSubmit}>
+            <span>
+              Create New Account
+              </span>
+              <span>
+                Get your free Receipt Generator account now
+              </span>
+            </div>
+          </div>
+
+          <form className="form-body w-100" onSubmit={handleSubmit}>
             <div className="user-details">
               <div className="input-box">
                 <input
@@ -117,7 +123,7 @@ function Signup() {
               </div>
             </div>
             <div className="py-4 d-flex justify-content-center align-items-center">
-              <button className="btn btn-outline-primary" type="submit">
+              <button className="btn btn-outline-primary transition-all duration-500" type="submit">
                 Sign up
               </button>
             </div>
