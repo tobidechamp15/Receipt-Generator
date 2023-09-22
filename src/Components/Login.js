@@ -1,14 +1,56 @@
-import React, { useState } from 'react';
-import "./Login.css"
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Login.css";
+import { Link } from "react-router-dom";
+import pic from "../pic.svg";
 
-function Login (){
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+function Login() {
+  return (
+    <div className="conatainer">
+      <div className="login-left">
+        <div className="image-container">
+          <img src={pic} alt="background" />
+        </div>
+      </div>
+      <div className="login-right">
+        <div className="nav">
+          <h3>Receipt Generator</h3>
+          <h3>
+            Don't have an account?{" "}
+            <span className="login-button">
+              <Link to="/">Sign up</Link>
+            </span>
+          </h3>
+        </div>
 
+        <div className="control">
+          <div className="title">Login</div>
 
-    return (
-      <div className="container bg-gray-300">
+          <form className="form-body">
+            <div className="user-details">
+              <div className="input-box">
+                <input className="input" type="text" placeholder="Email" />
+              </div>
+              <div className="input-box">
+                <input className="input" type="text" placeholder="Password" />
+              </div>
+              <div className="text-danger">Forgot password?</div>
+            </div>
+            <div className="py-4 d-flex justify-content-center align-items-center">
+              <button className="btn btn-primary">
+                <Link to="/home">Login</Link>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
+
+{
+  /* <div className="container bg-gray-300">
         <div className="p-5 Login-form">
           <h1>
             Login
@@ -18,7 +60,6 @@ function Login (){
               <div className="col-md-8">
                 <label>E-mail Address</label>
                 <input
-                  value = {email}
                   type="email"
                   id="name"
                   name="name"
@@ -33,7 +74,7 @@ function Login (){
               <div className="col-md-8">
                 <label>Password</label>
                 <input
-                value = {email}
+                
                   type="password"
                   id="name"
                   name="name"
@@ -51,8 +92,5 @@ function Login (){
             </div>
           </form>
         </div>
-      </div>
-    );
+      </div> */
 }
-
-export default Login
