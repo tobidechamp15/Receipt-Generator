@@ -10,6 +10,7 @@ function Home() {
   const [Products, setProducts] = useState([]);
   const [customerName, setCustomerName] = useState('');
   const [address, setAddress] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState(''); // Added paymentMethod state
 
   const addItem = () => {
     setProducts((prevProducts) => [
@@ -47,7 +48,6 @@ function Home() {
   };
   const [showInvoice, setShowInvoice] = useState(false);
 
-
   useEffect(() => {
     const storedCustomerName = localStorage.getItem('customerName');
     const storedAddress = localStorage.getItem('address');
@@ -65,7 +65,10 @@ function Home() {
   useEffect(() => {
     localStorage.setItem('customerName', customerName);
     localStorage.setItem('address', address);
-  }, [customerName, address]);
+    localStorage.setItem('paymentMethod', paymentMethod); // Added paymentMethod to localStorage
+  }, [customerName, address, paymentMethod]);
+  console.log(paymentMethod);
+
   return (
     <>
       {showInvoice ? (
@@ -74,6 +77,7 @@ function Home() {
           descriptionValues={descriptionValues}
           customerName={customerName}
           address={address}
+          paymentMethod={paymentMethod}
         />
       ) : (
         <section className="w-full h-full">
@@ -100,6 +104,19 @@ function Home() {
                   placeholder="Enter customer address"
                   className="rounded=md outline-none fs-6 bg-gray-200 text-lg placeholder:text-gray-400 border-slate-300 form-control placeholder:text-[12px] py-1 px-2"
                 />
+              </div>
+              <div className="flex flex-col bg--200 rounded-md w-full gap-2">
+                <p className="text-base">Payment Method</p>
+                <select
+                  value={paymentMethod}
+                  onChange={(e) => handleFormChange(e, setPaymentMethod)}
+                  className="transition-all duration-300 hover:shadow-md focus:ring focus:ring-opacity-50 focus:ring-blue-500 rounded-md outline-none bg-gray-200 text-lg placeholder:text-gray-400 border-slate-300  py-2 px-1"
+                  >
+                  <option value="">Select Payment Method</option>
+                  <option value="Debit Card">Debit Card</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Bank Transfer">Transfer</option>
+                </select>
               </div>
               {Products.map((description, index) => (
                 <div key={index} className="flex gap-2 flex-col">
