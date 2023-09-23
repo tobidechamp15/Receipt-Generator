@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="w-full fixed top-0 flex justify-between item-center  bg-secondary py-2 px-9 h-1/9 h-[8%]">
       <span className="text-red-500 md:text-3xl text-sm  p-2 cursor-pointer font-semibold flex items-center justify-center">
-        <img src={menu} alt="Add logo" className=" me-3 " />
+        <img src={menu} alt="Add logo" className=" me-3 sm:hidden" />
         <span className="xs:hidden">Add Company Logo</span>
       </span>
 

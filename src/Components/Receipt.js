@@ -37,8 +37,7 @@ const Receipt = ({ descriptionValues, customerName, address }) => {
             // Calculate the amount for each product
 
             const totalAmountForProduct =
-              parseFloat(values.enteredAmount) *
-              parseInt(values.enteredQuantity);
+              parseFloat(values.enteredAmount) * parseInt(values.enteredQuantity);
             totalAmount += totalAmountForProduct;
 
             return (
@@ -46,7 +45,7 @@ const Receipt = ({ descriptionValues, customerName, address }) => {
                 key={index}
                 className="flex w-100  bg-transparent gap-2 text-center w-full justify-between items-center"
               >
-                <p className=" text-center w-[80%] ">
+                <p className=" text-left flex flex-wrap  w-[80%] ">
                   {values.enteredProducts}
                 </p>
                 <div className="flex justify-between w-full">
