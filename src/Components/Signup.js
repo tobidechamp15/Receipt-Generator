@@ -1,140 +1,145 @@
-import React, {useState} from "react";
-import "./Signup.css";
-import { Link } from "react-router-dom";
-import pic from "../pic.svg"
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+import React, { useState } from 'react';
+import './Signup.css';
+import { Link } from 'react-router-dom';
+import pic from '../pic.svg';
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function Signup() {
   const [formData, setFormData] = useState({
     username: '',
-    email:'',
-    password:''
-  })
+    email: '',
+    password: '',
+  });
 
-  const [errors, setErrors] = useState({})
-
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const {name, value} = e.target
+    const { name, value } = e.target;
     setFormData({
-      ...formData, [name]: value
-    })
-  }
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const validationErrors = {}
-    if(!formData.username.trim()) {
-      validationErrors.username = "Username is required"
+    e.preventDefault();
+    const validationErrors = {};
+    if (!formData.username.trim()) {
+      validationErrors.username = 'Username is required';
     }
 
-    if(!formData.email.trim()) {
-      validationErrors.email = "Email is required"
-    }else if(/\S+@\S\.\S+/.test(formData.email)){
-      validationErrors.email = "Email is not valid"
+    if (!formData.email.trim()) {
+      validationErrors.email = 'Email is required';
+    } else if (/\S+@\S\.\S+/.test(formData.email)) {
+      validationErrors.email = 'Email is not valid';
     }
 
     if (!formData.password.trim()) {
-      validationErrors.password = "password is required";
+      validationErrors.password = 'password is required';
     } else if (formData.password.length < 6) {
-      validationErrors.password = "password should be at least 6 characters";
+      validationErrors.password = 'password should be at least 6 characters';
     }
 
-    setErrors(validationErrors)
+    setErrors(validationErrors);
 
-    if(Object.keys(validationErrors).length === 0){
-      window.location.href = "/login";
+    if (Object.keys(validationErrors).length === 0) {
+      window.location.href = '/login';
       // button.link.href = "/login";
     }
-  }
+  };
 
   // const isButtonDisabled =
   //   !formData.username.trim() ||
   //   !formData.email.trim() ||
   //   !formData.password.trim();
 
-  
   return (
-    <div className="conatainer container-fluid">
-      <div className="left">
-        <div className="nav">
-          <h3>Receipt Generator</h3>
+    <div className="d h-[100vh] w-full sm:w-4/5 md:w-full flex  ">
+      <div className="left h-100 lg:w-2/3 w-100">
+        <div className="nav flex items-center ">
+          <h3 className="font-semibold ">Receipt Generator</h3>
           <h3>
-            <span className="hide">Already have an account? </span>
+            <span className="hidden">Already have an account? </span>
             <span className="login-button btn btn-outline-primary">
               <Link to="/login">Log in</Link>
             </span>
           </h3>
         </div>
-
-        <div className="control ">
-          <div className="title mb-2">
-            <div className="flex flex-col  justify-center items-center">
-
-            <span>
-              Create New Account
-              </span>
-              <span>
-                Get your free Receipt Generator account now
-              </span>
+        <div className="flex items-center w-full justify-center">
+          <div className="flex flex-col control align-self-center bg-white py-3 xs:px-2 h-[100%] gap-7 rounded-md sm:px-8 md:w-[60%]">
+            <div className="title  mb-2">
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <span className="font-semibold">Create New Account</span>
+                <span className="text-center ">
+                  Get your free Receipt Generator account now
+                </span>
+              </div>
             </div>
+
+            <form className="form-body w-full" onSubmit={handleSubmit}>
+              <div className="user-details">
+                <div className="input-box gap-2 flex flex-col">
+                  <span className="text-base tracking-wider font-semibold">
+                    Username
+                  </span>
+                  <input
+                    className="input form-control"
+                    type="text"
+                    placeholder="Enter username"
+                    name="username"
+                    onChange={handleChange}
+                  />
+                  {errors.username && (
+                    <span className="text-danger">{errors.username}</span>
+                  )}
+                </div>
+
+                <div className="input-box gap-2 flex flex-col">
+                  <span className="text-base tracking-wider font-semibold">
+                    Email
+                  </span>
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Enter email"
+                    name="email"
+                    onChange={handleChange}
+                  />
+                  {errors.email && (
+                    <span className="text-danger">{errors.email}</span>
+                  )}
+                </div>
+
+                <div className="input-box gap-2 flex flex-col">
+                  <span className="text-base tracking-wider font-semibold">
+                    Password
+                  </span>
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                  />
+
+                  {errors.password && (
+                    <span className="text-danger">{errors.password}</span>
+                  )}
+                </div>
+              </div>
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                <button
+                  className="btn btn-outline-primary transition-all duration-500"
+                  type="submit"
+                >
+                  Sign up
+                </button>
+              </div>
+            </form>
           </div>
-
-          <form className="form-body w-100" onSubmit={handleSubmit}>
-            <div className="user-details">
-              <div className="input-box">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  onChange={handleChange}
-                />
-                {errors.username && (
-                  <span className="text-danger">{errors.username}</span>
-                )}
-              </div>
-
-              <div className="input-box">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleChange}
-                />
-                {errors.email && (
-                  <span className="text-danger">{errors.email}</span>
-                )}
-              </div>
-
-              <div className="input-box">
-                <input
-                  className="input"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                />
-
-                {errors.password && (
-                  <span className="text-danger">{errors.password}</span>
-                )}
-              </div>
-            </div>
-            <div className="py-4 d-flex justify-content-center align-items-center">
-              <button className="btn btn-outline-primary transition-all duration-500" type="submit">
-                Sign up
-              </button>
-            </div>
-          </form>
         </div>
       </div>
-      <div className="right">
-        <div className="image-container">
-          <img src={pic} alt="background" className="hide" />
-        </div>
-      </div>
+      <div className=" hidden md:flex w-1/3  gradient h-100"></div>
     </div>
   );
 }
