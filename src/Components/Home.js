@@ -141,12 +141,12 @@ function Home() {
                 </button>
               )}
             </div>
-            <Receipt
+            {/* <Receipt
               className="mt-4 w-full d-none"
               descriptionValues={descriptionValues}
               customerName={customerName}
               address={address}
-            />
+            /> */}
           </div>
         </section>
       )}
