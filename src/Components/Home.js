@@ -41,29 +41,13 @@ function Home() {
   //     submitHandler(descriptionValues[index], index);
   //   });
   // };
-  const isSaveButtonDisabled = !customerName || !address; // Disable if customerName or address is empty
+  const isSaveButtonDisabled = !customerName || !address || !Products; // Disable if customerName or address is empty
   const handleFormChange = (event, setFormFunction) => {
     setFormFunction(event.target.value);
   };
   const [showInvoice, setShowInvoice] = useState(false);
 
-  //customerNam and Address
 
-  // const [enteredCustomerName, setEnteredCustomerName] = useState('');
-
-  // const [enteredAddress, setEnteredAddress] = useState('');
-
-  // useEffect(() => {
-  //   const storedCustomerName = localStorage.getItem('enteredCustomer');
-  //   const storedAddress = localStorage.getItem('enteredAddress');
-
-  //   if (storedAddress) {
-  //     setAddress(storedAddress);
-  //   }
-  //   if (storedCustomerName) {
-  //     setCustomerName(storedCustomerName);
-  //   }
-  // }, []);
   useEffect(() => {
     const storedCustomerName = localStorage.getItem('customerName');
     const storedAddress = localStorage.getItem('address');
@@ -126,10 +110,10 @@ function Home() {
                 </div>
               ))}
 
-              <div className="flex justify-between px-4 items-center">
+              <div className="flex justify-between items-center px-4">
                 <button
                   onClick={addItem}
-                  className="btn btn-primary w-fit flex self-center"
+                  className="btn btn-primary  flex self-center w-auto "
                 >
                   Add Item
                 </button>
@@ -157,12 +141,12 @@ function Home() {
                 </button>
               )}
             </div>
-            <Receipt
+            {/* <Receipt
               className="mt-4 w-full d-none"
               descriptionValues={descriptionValues}
               customerName={customerName}
               address={address}
-            />
+            /> */}
           </div>
         </section>
       )}

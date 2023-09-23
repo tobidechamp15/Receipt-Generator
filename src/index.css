@@ -32,6 +32,7 @@ input[type='text']::first-letter {
   font-family: Arial, sans-serif;
   border: 1px solid #000;
 }
+
 .gradient {
   background: linear-gradient(
     120deg,
