@@ -17,6 +17,20 @@ code {
     monospace;
 }
 
+input[type='text']::first-letter {
+  text-transform: uppercase !important;
+}
+
+.form-control {
+  padding: 0;
+}
+
+.receipt {
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #000;
 .gradient {
   background: linear-gradient(
     120deg,

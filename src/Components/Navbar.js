@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import userImg from '../assets/user.png';
-import addBtn from '../assets/add.png';
+import menu from '../assets/menu-ham.png';
 import Dropdown from './Dropdown';
 
 const Navbar = () => {
@@ -14,8 +14,8 @@ const Navbar = () => {
   };
   return (
     <nav className="w-full fixed top-0 flex justify-between item-center  bg-secondary py-2 px-9 h-1/9 h-[8%]">
-      <span className="text-red-500 md:text-3xl text-sm border-red-300 border-5 p-2 cursor-pointer font-semibold flex items-center justify-center">
-        <img src={addBtn} alt="Add logo" className=" me-3 " />
+      <span className="text-red-500 md:text-3xl text-sm  p-2 cursor-pointer font-semibold flex items-center justify-center">
+        <img src={menu} alt="Add logo" className=" me-3 " />
         <span className="xs:hidden">Add Company Logo</span>
       </span>
 
@@ -23,15 +23,15 @@ const Navbar = () => {
         <img
           src={userImg}
           alt="profile"
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
+          onClick={(handleMouseOver,handleMouseOut)}
+          // onMouseOut={handleMouseOut}
           className="cursor-pointer xs:h-[10vw] relative"
         />
         <span className="hidden md:flex">Company name</span>
         {showDropdownComponent && (
           <Dropdown
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
+            onClick={(handleMouseOver, handleMouseOut)}
+            // onClick={handleMouseOut}
             className="transition-700 ease-in-out"
           />
         )}
