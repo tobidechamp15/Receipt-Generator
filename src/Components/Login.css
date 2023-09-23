@@ -5,10 +5,6 @@
 }
 
 
-.conatainer{
-    display: flex;
-    flex-direction: row;
-}
 
 .login-left {
   width: 30%;
@@ -25,20 +21,7 @@
 }
 
 
-.control {
-  max-width: 900px;
-  width: 100%;
-  background-color: #f1f4fe;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.form-body{
-    width: 50%;
-}
 
 .control .input {
   width: 100%;

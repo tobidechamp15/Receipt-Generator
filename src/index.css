@@ -10,10 +10,40 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f1f4fe;
-  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.gradient {
+  background: linear-gradient(
+    120deg,
+    #ffffff,
+    #5587f3,
+    #0051ff,
+    #4e4199,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6f7dba
+  );
+  background-size: 1600% 1600%;
+
+  -webkit-animation: AnimationName 5s ease infinite;
+  -moz-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
