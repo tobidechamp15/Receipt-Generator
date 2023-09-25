@@ -36,11 +36,7 @@ function Home() {
     updatedDescriptionValues[index] = values;
     setDescriptionValues(updatedDescriptionValues);
   };
-  // const submitAllForms = () => {
-  //   Products.forEach((_, index) => {
-  //     submitHandler(descriptionValues[index], index);
-  //   });
-  // };
+
   const isSaveButtonDisabled = !customerName || !address || !Products; // Disable if customerName or address is empty
   const handleFormChange = (event, setFormFunction) => {
     setFormFunction(event.target.value);

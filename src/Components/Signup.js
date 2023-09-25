@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Signup.css';
 import { Link } from 'react-router-dom';
-import pic from '../pic.svg';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+// import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -10,8 +10,19 @@ function Signup() {
     email: '',
     password: '',
   });
-
+  // const [input, setInput] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  // });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // Add loading state
+
+
+
+  const handleInput = (e) => {
+    setInput({ ...input, [e.target.id]: e.target.value });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,36 +34,72 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = {};
-    if (!formData.username.trim()) {
-      validationErrors.username = 'Username is required';
-    }
+    setLoading(true); // Set loading to true while waiting for response
+    setTimeout(() => {
+      const validationErrors = {};
+      if (!formData.username.trim()) {
+        validationErrors.username = 'Username is required';
+      }
 
-    if (!formData.email.trim()) {
-      validationErrors.email = 'Email is required';
-    } else if (/\S+@\S\.\S+/.test(formData.email)) {
-      validationErrors.email = 'Email is not valid';
-    }
+      if (!formData.email.trim()) {
+        validationErrors.email = 'Email is required';
+      } else if (/\S+@\S\.\S+/.test(formData.email)) {
+        validationErrors.email = 'Email is not valid';
+      }
 
-    if (!formData.password.trim()) {
-      validationErrors.password = 'password is required';
-    } else if (formData.password.length < 6) {
-      validationErrors.password = 'password should be at least 6 characters';
-    }
+      if (!formData.password.trim()) {
+        validationErrors.password = 'password is required';
+      } else if (formData.password.length < 6) {
+        validationErrors.password = 'password should be at least 6 characters';
+      }
 
-    setErrors(validationErrors);
+      setErrors(validationErrors);
+      setLoading(false); // Set loading to false when the response is received
 
-    if (Object.keys(validationErrors).length === 0) {
-      window.location.href = '/login';
-      // button.link.href = "/login";
-    }
+      if (Object.keys(validationErrors).length === 0) {
+        // window.location.href = '/login';
+        // button.link.href = "/login";
+        const requestData = {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        };
+        axios
+          .post('http://localhost:6002/api/auth/signup', requestData, {
+            headers: {
+              'Content-Type': 'application/json', // Set the content type header
+            },
+          })
+          .then((response) => {
+            console.log(response.json); // Handle the response data as needed
+            // Redirect to the login page or do something else
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
+    }, 5000); // Simulated 2-second delay, replace with your actual API call
   };
 
   // const isButtonDisabled =
   //   !formData.username.trim() ||
   //   !formData.email.trim() ||
   //   !formData.password.trim();
-
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios
+  //       .post('http://localhost:6002/api/auth/signup', input)
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         setInput(res.data);
+  //         navigate('/login');
+  //         alert('User registerd successfully');
+  //       });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   return (
     <div className="d h-[100vh] w-full sm:w-4/5 md:w-full flex  ">
       <div className="left h-100 lg:w-2/3 w-100">
@@ -83,6 +130,8 @@ function Signup() {
                     Username
                   </span>
                   <input
+                    // value={input.text}
+                    id="text"
                     className="input form-control"
                     type="text"
                     placeholder="Enter username"
@@ -99,6 +148,8 @@ function Signup() {
                     Email
                   </span>
                   <input
+                    // value={input.email}
+                    id="password"
                     className="input"
                     type="text"
                     placeholder="Enter email"
@@ -115,6 +166,8 @@ function Signup() {
                     Password
                   </span>
                   <input
+                    // value={input.password}
+                    id="password"
                     className="input"
                     type="password"
                     placeholder="Password"
@@ -127,13 +180,25 @@ function Signup() {
                   )}
                 </div>
               </div>
-              <div className="py-4 d-flex justify-content-center align-items-center">
+              {/* <div className="py-4 d-flex justify-content-center align-items-center">
                 <button
                   className="btn btn-outline-primary transition-all duration-500"
                   type="submit"
                 >
                   Sign up
                 </button>
+              </div> */}
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                {loading ? (
+                  <div className="loader"></div> // Render the loader when loading is true
+                ) : (
+                  <button
+                    className="btn btn-outline-primary transition-all duration-500"
+                    type="submit" 
+                  >
+                    Sign up
+                  </button>
+                )} 
               </div>
             </form>
           </div>
@@ -145,76 +210,3 @@ function Signup() {
 }
 
 export default Signup;
-
-// <div className="container bg-gray-300">
-//   <div className="p-5 Signup-form">
-//     <h1>SIGN UP</h1>
-//     <form>
-//       <div className="row justify-content-center align-items-center">
-//         <div className="col-md-8">
-//           <label>Company Name</label>
-//           <input
-//             type="text"
-//             id="name"
-//             name="name"
-//             placeholder="Your company name"
-//             className=" p-3 rounded=md outline-none bg-gray-200 form-control"
-//             required
-//           />
-//         </div>
-//       </div>
-
-//       <div className="row justify-content-center align-items-center">
-//         <div className="col-md-8">
-//           <label>E-mail Address</label>
-//           <input
-//             type="email"
-//             id="name"
-//             name="name"
-//             placeholder="E-mail Address"
-//             className=" p-3 rounded=md outline-none bg-gray-200 form-control"
-//             required
-//           />
-//         </div>
-//       </div>
-
-//       <div className="row justify-content-center align-items-center">
-//         <div className="col-md-4">
-//           <label>Password</label>
-//           <input
-//             type="password"
-//             id="name"
-//             name="name"
-//             placeholder="Password"
-//             className=" p-3 rounded=md outline-none bg-gray-200 form-control col-md-6"
-//             required
-//           />
-//         </div>
-//         <div className="col-md-4">
-//           <label>Confirm Password</label>
-//           <input
-//             type="password"
-//             id="name"
-//             name="name"
-//             placeholder="Confirm password"
-//             className=" p-3 rounded=md outline-none bg-gray-200 form-control col-md-6"
-//             required
-//           />
-//         </div>
-//       </div>
-
-//       <div className="d-flex justify-content-center align-items-center">
-//         <button className="btn btn-primary col-md-4">Sign up</button>
-//       </div>
-//       <div className="row justify-content-center align-items-center">
-//         <div className="col-md-3">
-//           <a href="./Home.js">
-//             <p>
-//               Already have an account? <Link to='/login' className="text-primary">Login</Link>
-//             </p>
-//           </a>
-//         </div>
-//       </div>
-//     </form>
-//   </div>
-// </div>
