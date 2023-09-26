@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(
     cors({
-        origin: "http://localhost:3000"
+        origin: "http://localhost:3000",
     })
 );
 
@@ -35,5 +35,5 @@ async function connect() {
 }
 connect();
 
-
+ 
 
