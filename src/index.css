@@ -32,6 +32,7 @@ input[type='text']::first-letter {
   font-family: Arial, sans-serif;
   border: 1px solid #000;
 }
+
 .gradient {
   background: linear-gradient(
     120deg,
@@ -61,4 +62,19 @@ input[type='text']::first-letter {
   100% {
     background-position: 0% 82%;
   }
+}
+/* Loader.css */
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #007bff; /* You can set the loader color */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
