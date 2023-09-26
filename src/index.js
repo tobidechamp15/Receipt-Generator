@@ -14,6 +14,7 @@ import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Receipt from "./Components/Receipt";
+import ForgotPassword from "./Components/ForgotPassword";
 
 // Create a router
 const router = createBrowserRouter([
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
     path: '/',
     // element: <h1 className='title'>Hello from React Router</h1>
     // element: <App />,
-    element: <Signup />,
+    element: <Login />,
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/signup',
+    element: <Signup />,
   },
   {
     path: '/home',
@@ -39,8 +40,11 @@ const router = createBrowserRouter([
         // customerName={customerName}
         // address={address}
       />,
-    
   },
+  {
+    path: '/ForgotPassword',
+    element: <ForgotPassword />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

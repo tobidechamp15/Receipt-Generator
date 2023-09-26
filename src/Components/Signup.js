@@ -61,7 +61,7 @@ function Signup() {
           <h3>
             <span className="hidden">Already have an account? </span>
             <span className="login-button btn btn-outline-primary">
-              <Link to="/login">Log in</Link>
+              <Link to="/">Log in</Link>
             </span>
           </h3>
         </div>
