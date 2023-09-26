@@ -36,9 +36,9 @@ function Login() {
                 <div className="text-danger">Forgot password?</div>
               </div>
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <button className="btn btn-primary">
-                  <Link to="/home">Login</Link>
-                </button>
+                <Link to="/home">
+                  <button className="btn btn-primary">Login</button>
+                </Link>
               </div>
               <div>
                 <span className="me-1">Don't have an account?</span>
