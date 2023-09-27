@@ -33,7 +33,9 @@ function Login() {
                   </span>
                   <input className="input" type="text" placeholder="Password" />
                 </div>
-                <div className="text-danger">Forgot password?</div>
+                <div className="text-danger">
+                  <Link to="/ForgotPassword">Forgot password?</Link>
+                </div>
               </div>
               <div className="py-4 d-flex justify-content-center align-items-center">
                 <Link to="/home">
@@ -42,7 +44,7 @@ function Login() {
               </div>
               <div>
                 <span className="me-1">Don't have an account?</span>
-                <Link to="/">
+                <Link to="/signup">
                   <span className=" w-fit text-center text-green-500 font-medium transition-all duration-500 underline underline-offset-2">
                     Sign up
                   </span>
