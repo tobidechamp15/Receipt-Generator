@@ -63,7 +63,7 @@ function Home() {
     localStorage.setItem('address', address);
     localStorage.setItem('paymentMethod', paymentMethod); // Added paymentMethod to localStorage
   }, [customerName, address, paymentMethod]);
-  console.log(paymentMethod);
+  // console.log(paymentMethod);
 
   return (
     <>
