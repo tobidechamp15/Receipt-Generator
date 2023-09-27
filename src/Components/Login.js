@@ -31,7 +31,7 @@ function Login() {
                   <span className="text-base tracking-wider font-semibold">
                     Password
                   </span>
-                  <input className="input" type="text" placeholder="Password" />
+                  <input className="input" type="password" placeholder="Password" />
                 </div>
                 <div className="text-danger">
                   <Link to="/ForgotPassword">Forgot password?</Link>
