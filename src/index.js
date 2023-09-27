@@ -15,6 +15,7 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
+import Dashboard from "./Components/Dashboard";
 
 // Create a router
 const router = createBrowserRouter([
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
   {
     path: '/ForgotPassword',
     element: <ForgotPassword />
-  }
+  },
+  {
+    path: '/home/dashboard',
+    element: <Dashboard />
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -13,7 +13,7 @@ function Login() {
           </span>
         </div>
         <div className="flex w-100 justify-center ">
-          <div className="control boxShadow  bg-white py-[5%] my-[5%] px-[2.5%] sm:w-2/5 xs:w-full md:w-[30%] lg:w-[30%]">
+          <div className="control boxShadow  bg-white py-[5%] my-[5%] px-[2.5%] sm:w-2/5 xs:w-full md:w-[40%] lg:w-[30%]">
             <div className="flex flex-col justify-center items-center  gap-4 my-[2%]">
               <span className="text-xl font-semibold">Welcome Back !</span>
               <span className="text-sm">Sign in to continue</span>
