@@ -13,11 +13,11 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-input[type='text']::first-letter {
+input[type="text"]::first-letter {
   text-transform: uppercase !important;
 }
 
@@ -75,6 +75,13 @@ input[type='text']::first-letter {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.boxShadow {
+  box-shadow: 10px 10px 10px rgb(203, 208, 209);
 }

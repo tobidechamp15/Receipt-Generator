@@ -101,19 +101,19 @@ function Signup() {
   //   }
   // };
   return (
-    <div className="d h-[100vh] w-full sm:w-4/5 md:w-full flex  ">
+    <div className="d h-[100vh] w-full md:w-4/5 flex w-100 justify-center items-center">
       <div className="left h-100 lg:w-2/3 w-100">
-        <div className="nav flex items-center ">
+        <div className="nav flex items-center fixed top-0 w-100">
           <h3 className="font-semibold ">Receipt Generator</h3>
           <h3>
             <span className="hidden">Already have an account? </span>
-            <span className="login-button btn btn-outline-primary">
+            <span className="login-button btn btn-outline-primary lg:text-white">
               <Link to="/">Log in</Link>
             </span>
           </h3>
         </div>
-        <div className="flex items-center w-full justify-center">
-          <div className="flex flex-col control align-self-center bg-white py-3 xs:px-2 h-[100%] gap-7 rounded-md sm:px-8 md:w-[60%]">
+        <div className="flex items-center w-full justify-center h-full ">
+          <div className="flex flex-col control align-self-center bg-white py-3  rounded-xl p-[5%]  gap-7  sm:px-8 md:w-[60%]">
             <div className="title  mb-2">
               <div className="flex flex-col gap-2 justify-center items-center">
                 <span className="font-semibold">Create New Account</span>

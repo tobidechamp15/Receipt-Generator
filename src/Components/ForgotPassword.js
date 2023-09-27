@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./ForgotPassword.css";
 import { Link } from "react-router-dom";
-import {FaAngleLeft} from 'react-icons/fa6'
-
+import { FaAngleLeft } from "react-icons/fa";
 
 function ForgotPassword() {
   return (
@@ -25,10 +24,11 @@ function ForgotPassword() {
           <div className="button-container">
             <button className="btn btn-primary">Submit</button>
           </div>
-          <div className="login-reroute">
+          <div className="my-3 flex items-center justify-center gap-3">
             <Link to="/">
-              <FaAngleLeft /> Back to Login
+              <FaAngleLeft />
             </Link>
+              <span>Back to Login</span>
           </div>
         </form>
       </div>
