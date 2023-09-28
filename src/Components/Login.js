@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import './Login.css';
-import { Link } from 'react-router-dom';
-import pic from '../pic.svg';
+import React, { useState } from "react";
+import "./Login.css";
+import { Link } from "react-router-dom";
+import pic from "../pic.svg";
 
 function Login() {
   return (
