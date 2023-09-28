@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 // import FontAwesomeIcon from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faUserCircle,
+  faGear,
+  faPowerOff,
+} from "@fortawesome/free-solid-svg-icons";
 
 import menu from "../assets/menu-ham.png";
 
