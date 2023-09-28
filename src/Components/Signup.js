@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import instance from './axios/axios'
 import './Signup.css';
 import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
@@ -34,12 +35,16 @@ function Signup() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:6002/api/auth/signup", input)
+      await instance
+        .post(
+          '/auth/signup',
+          input
+        )
         .then((res) => {
-          console.log(res.data)
-          setInput(res.data)
-          navigate("/login")
-          alert("User registered succesfully")
+          console.log(res.data);
+          setInput(res.data);
+          navigate("/login");
+          alert("User registered successfully");
         })
     } catch (err) {
       console.log(err)
@@ -212,7 +217,8 @@ function Signup() {
               </div> */}
               <div className="py-4 d-flex justify-content-center align-items-center">
                 {/* {loading ? ( */}
-                  <div className="loader"></div> // Render the loader when loading is true
+                <div className="loader"></div>
+                   {/* // Render the loader when loading is true */}
                 {/* ) : ( */}
                   <button
                     className="btn btn-outline-primary transition-all duration-500"
