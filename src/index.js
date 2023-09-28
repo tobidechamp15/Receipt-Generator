@@ -30,8 +30,8 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: '/home',
-    element: <Home />,
+    path: '/dashboard',
+    element: <Dashboard />,
   },
   {
     path: '/home/receipt',
@@ -47,8 +47,8 @@ const router = createBrowserRouter([
     element: <ForgotPassword />
   },
   {
-    path: '/home/dashboard',
-    element: <Dashboard />
+    path: '/home',
+    element: <Home />
   },
 ]);
 

@@ -79,7 +79,7 @@ function Home() {
         <section className="w-full h-full">
           <Navbar />
           <div className="flex justify-center items-center h-fit flex-col mt-[61px]">
-            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:pt-[30%] sm:mt-[10%] md:w-2/4 lg:w-1/3 bg-slate-100 border border-black md:rounded-3xl">
+            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:mt-[30%] sm:mt-[10%] md:w-2/4 lg:w-1/3 bg-slate-100 border border-black md:rounded-3xl">
               {/* ... (Company and Customer input fields) */}
               <div className="flex flex-col bg--200 rounded-md w-full gap-2">
                 <p className="text-base  font-">Customers name</p>

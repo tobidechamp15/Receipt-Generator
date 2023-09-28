@@ -13,7 +13,7 @@ function Login() {
           </span>
         </div>
         <div className="flex w-100 justify-center ">
-          <div className="control boxShadow  bg-white py-[5%] my-[5%] px-[2.5%] sm:w-2/5 xs:w-full md:w-[40%] lg:w-[30%]">
+          <div className="control boxShadow  bg-white py-[5%] my-[5%] px-[2.5%] sm:w-1/2 xs:w-full md:w-[40%] lg:w-[30%]">
             <div className="flex flex-col justify-center items-center  gap-4 my-[2%]">
               <span className="text-xl font-semibold">Welcome Back !</span>
               <span className="text-sm">Sign in to continue</span>
@@ -25,20 +25,20 @@ function Login() {
                   <span className="text-base tracking-wider font-semibold">
                     Email
                   </span>
-                  <input className="input" type="text" placeholder="Email" />
+                  <input className="input form-control" type="text" placeholder="Email" />
                 </div>
                 <div className="input-box gap-2 flex flex-col">
                   <span className="text-base tracking-wider font-semibold">
                     Password
                   </span>
-                  <input className="input" type="password" placeholder="Password" />
+                  <input className="input form-control" type="password" placeholder="Password" />
                 </div>
                 <div className="text-danger">
                   <Link to="/ForgotPassword">Forgot password?</Link>
                 </div>
               </div>
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <Link to="/home">
+                <Link to="/dashboard">
                   <button className="btn btn-primary">Login</button>
                 </Link>
               </div>
