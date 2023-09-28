@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import settings from "../assets/settings.png";
 import profile from "../assets/user (1).png";
 import Dashboard from "../assets/home.png";
@@ -12,11 +13,14 @@ const Dropdown = () => {
   return (
     <div className="flex flex-col px-2 py-1 bg-white text-blue-400 text-sm sm:rounded-xl  absolute top-[70px] right-0  duration-500 ease-in-out delay delay-700 w-full sm:w-fit sm:right-[20px] ">
       <ul className="flex flex-col g">
+        <Link to='/dashboard'>
+
         <li className="flex gap-3  items-center cursor-pointer fw-bold  text-sm hover:bg-gray-200  hover:rounded-xl  px-8 duration-500 py-1">
           <FontAwesomeIcon icon={faHome} size="2x" />
           {/* <img src={home} className="w-[24px]" alt="" /> */}
           Dashboard
         </li>
+        </Link>
         <li className="flex gap-3  items-center cursor-pointer text-sm hover:bg-gray-200  hover:rounded-xl  px-8 duration-500 py-1">
           <FontAwesomeIcon icon={faUserCircle} size="2x" />
           {/* <img src={profile} alt="" /> */}
