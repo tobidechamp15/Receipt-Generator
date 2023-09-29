@@ -1,9 +1,42 @@
-import React, { useState } from 'react';
-import './Login.css';
-import { Link } from 'react-router-dom';
-import pic from '../pic.svg';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from "./axios/axios";
+import "./Login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // You can add validation here if needed
+
+    // Make a POST request to your API
+    axiosInstance
+      .post("/auth/signIn", { email, password })
+      .then((response) => {
+        // Handle a successful response from the API
+        console.log(response.data);
+        navigate("/home")
+        // setSuccessMessage("Login successful"); // Set a success message if needed
+      })
+      .catch((error) => {
+        // Handle errors from the API
+        console.error("Error:", error);
+        setError("Login failed"); // Set an error message if needed
+      });
+  }
   return (
     <div className="flex flex-col h-screen container-fluid">
       <div className="h-full ">
@@ -19,28 +52,30 @@ function Login() {
               <span className="text-sm">Sign in to continue</span>
             </div>
 
-            <form className="form-body mt-5">
+            <form className="form-body mt-5" onSubmit={handleSubmit}>
               <div className="user-details">
                 <div className="input-box gap-2 flex flex-col">
                   <span className="text-base tracking-wider font-semibold">
                     Email
                   </span>
-                  <input className="input form-control" type="text" placeholder="Email" />
+                  <input className="input" type="email" placeholder="Email" onChange={handleEmailChange} value={email}/>
+
                 </div>
                 <div className="input-box gap-2 flex flex-col">
                   <span className="text-base tracking-wider font-semibold">
                     Password
                   </span>
-                  <input className="input form-control" type="password" placeholder="Password" />
+                  <input className="input" type="text" placeholder="Password" onChange={handlePasswordChange} value={password}/>
                 </div>
                 <div className="text-danger">
                   <Link to="/ForgotPassword">Forgot password?</Link>
                 </div>
               </div>
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <Link to="/dashboard">
-                  <button className="btn btn-primary">Login</button>
-                </Link>
+                <button className="btn btn-primary" type="submit">
+                  <Link to="/home">Login</Link>
+                </button>
+
               </div>
               <div>
                 <span className="me-1">Don't have an account?</span>
