@@ -28,7 +28,7 @@ function Login() {
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
-        navigate("/home")
+        navigate("/dashboard")
         // setSuccessMessage("Login successful"); // Set a success message if needed
       })
       .catch((error) => {
