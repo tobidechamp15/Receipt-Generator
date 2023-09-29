@@ -1,10 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://generatinginvoiceapp.onrender.com/api',
-  headers: {
-    "Content-Type": 'application-json',
-  },
+const axiosInstance = axios.create({
+  baseURL: 'https://generatinginvoiceapp.onrender.com/api', // Your API base URL
 });
 
-export default instance;
+export default axiosInstance;

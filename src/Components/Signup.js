@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import instance from './axios/axios'
+import axiosInstance from './axios/axios'
 import './Signup.css';
 import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
@@ -35,7 +35,7 @@ function Signup() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await instance
+      await axiosInstance
         .post(
           '/auth/signup',
           input
@@ -45,7 +45,7 @@ function Signup() {
           setInput(res.data);
           navigate("/login");
           alert("User registered successfully");
-        })
+        });
     } catch (err) {
       console.log(err)
     }
