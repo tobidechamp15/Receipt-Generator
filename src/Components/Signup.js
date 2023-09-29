@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import axiosInstance from './axios/axios'
-import './Signup.css';
-import { Link } from 'react-router-dom';
-import {useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import axiosInstance from "./axios/axios";
+import "./Signup.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function Signup() {
@@ -11,7 +12,8 @@ function Signup() {
     username: "",
     email: "",
     password: "",
-  })
+  });
+  const [loading, setLoader] = useState(false);
   const navigate = useNavigate();
   // const [formData, setFormData] = useState({
   //   username: '',
@@ -23,33 +25,58 @@ function Signup() {
   // //   email: '',
   // //   password: '',
   // // });
-  // const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   // const [loading, setLoading] = useState(false); // Add loading state
 
-
-
   const handleOnChange = (e) => {
-    setInput({ ...input, [e.target.id] : e.target.value });
+    setInput({ ...input, [e.target.id]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axiosInstance
-        .post(
-          '/auth/signup',
-          input
-        )
-        .then((res) => {
+        const validationErrors = {};
+
+    if (!input.username.trim()) {
+      validationErrors.username = "Username is required";
+    }
+
+    if (!input.email.trim()) {
+      validationErrors.email = "Email is required";
+    } else if (/\S+@\S\.\S+/.test(input.email)) {
+      validationErrors.email = "Email is not valid";
+    }
+
+    if (!input.password.trim()) {
+      validationErrors.password = "password is required";
+    } else if (input.password.length < 6) {
+      validationErrors.password = "password should be at least 6 characters";
+    }
+    setErrors(validationErrors);
+        setLoader(true);
+
+    if (Object.keys(validationErrors).length === 0) {
+      //       // window.location.href = '/login';
+      //       // button.link.href = "/login";
+      const requestData = {
+        username: input.username,
+        email: input.email,
+        password: input.password,
+      };
+      try {
+        await axiosInstance.post("/auth/signup", input).then((res) => {
           console.log(res.data);
           setInput(res.data);
-          navigate("/login");
+          navigate("/");
           alert("User registered successfully");
         });
-    } catch (err) {
-      console.log(err)
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoader(false);
+      }
     }
-  }
+  };
+
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
   //   setFormData({
@@ -111,129 +138,108 @@ function Signup() {
   //   !formData.username.trim() ||
   //   !formData.email.trim() ||
   //   !formData.password.trim();
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios
-  //       .post('http://localhost:6002/api/auth/signup', input)
-  //       .then((res) => {
-  //         console.log(res.data);
-  //         setInput(res.data);
-  //         navigate('/login');
-  //         alert('User registerd successfully');
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+
   return (
-    <div className="d h-[100vh] w-full md:w-4/5 flex w-100 justify-center items-center">
-      <div className="left h-100 lg:w-2/3 w-100">
-        <div className="nav flex items-center fixed top-0 w-100">
-          <h3 className="font-semibold ">Receipt Generator</h3>
-          <h3>
-            <span className="hidden">Already have an account? </span>
-            <span className="login-button btn btn-outline-primary lg:text-white">
-              <Link to="/">Log in</Link>
-            </span>
-          </h3>
-        </div>
-        <div className="flex items-center w-full justify-center h-full ">
-          <div className="flex flex-col control align-self-center bg-white py-3  rounded-xl p-[5%]  gap-7  sm:px-8 md:w-[60%]">
-            <div className="title  mb-2">
-              <div className="flex flex-col gap-2 justify-center items-center">
-                <span className="font-semibold">Create New Account</span>
-                <span className="text-center ">
-                  Get your free Receipt Generator account now
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="d h-[100vh] w-full md:w-4/5 flex w-100 justify-center items-center">
+          <div className="left h-100 lg:w-2/3 w-100">
+            <div className="nav flex items-center fixed top-0 w-100">
+              <h3 className="font-semibold ">Receipt Generator</h3>
+              <h3>
+                <span className="hidden">Already have an account? </span>
+                <span className="login-button btn btn-outline-primary lg:text-white">
+                  <Link to="/">Log in</Link>
                 </span>
+              </h3>
+            </div>
+            <div className="flex items-center w-full justify-center h-full ">
+              <div className="flex flex-col control align-self-center bg-white py-3  rounded-xl p-[5%]  gap-7  sm:px-8 md:w-[60%]">
+                <div className="title  mb-2">
+                  <div className="flex flex-col gap-2 justify-center items-center">
+                    <span className="font-semibold">Create New Account</span>
+                    <span className="text-center ">
+                      Get your free Receipt Generator account now
+                    </span>
+                  </div>
+                </div>
+
+                <form className="form-body w-full" onSubmit={onSubmit}>
+                  <div className="user-details">
+                    <div className="input-box gap-2 flex flex-col">
+                      <span className="text-base tracking-wider font-semibold">
+                        Username
+                      </span>
+                      <input
+                        value={input.username}
+                        id="username"
+                        className="input form-control"
+                        type="text"
+                        placeholder="Enter username"
+                        //name="username"
+                        onChange={handleOnChange}
+                      />
+                      {errors.username && (
+                    <span className="text-danger">{errors.username}</span>
+                  )}
+                    </div>
+
+                    <div className="input-box gap-2 flex flex-col">
+                      <span className="text-base tracking-wider font-semibold">
+                        Email
+                      </span>
+                      <input
+                        value={input.email}
+                        id="email"
+                        className="input"
+                        type="text"
+                        placeholder="Enter email"
+                        autoComplete="current-password"
+                        onChange={handleOnChange}
+                      />
+                      {errors.email && (
+                    <span className="text-danger">{errors.email}</span>
+                  )}
+                    </div>
+
+                    <div className="input-box gap-2 flex flex-col">
+                      <span className="text-base tracking-wider font-semibold">
+                        Password
+                      </span>
+                      <input
+                        value={input.password}
+                        id="password"
+                        className="input"
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="current-password"
+                        onChange={handleOnChange}
+                      />
+
+                      {errors.password && (
+                    <span className="text-danger">{errors.password}</span>
+                  )}
+                    </div>
+                  </div>
+
+                  <div className="py-4 d-flex justify-content-center align-items-center">
+                    <button
+                      className="btn btn-outline-primary transition-all duration-500"
+                      type="submit"
+                    >
+                      Sign up
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-
-            <form className="form-body w-full" onSubmit={onSubmit}>
-              <div className="user-details">
-                <div className="input-box gap-2 flex flex-col">
-                  <span className="text-base tracking-wider font-semibold">
-                    Username
-                  </span>
-                  <input
-                     value={input.username}
-                    id="username"
-                    className="input form-control"
-                    type="text"
-                    placeholder="Enter username"
-                  
-                    //name="username"
-                    onChange={handleOnChange}
-                  />
-                  {/* {errors.username && (
-                    <span className="text-danger">{errors.username}</span>
-                  )} */}
-                </div>
-
-                <div className="input-box gap-2 flex flex-col">
-                  <span className="text-base tracking-wider font-semibold">
-                    Email
-                  </span>
-                  <input
-                     value={input.email}
-                    id="email"
-                    className="input"
-                    type="text"
-                    placeholder="Enter email"
-                    //name="email"
-                    onChange={handleOnChange}
-                  />
-                  {/* {errors.email && (
-                    <span className="text-danger">{errors.email}</span>
-                  )} */}
-                </div>
-
-                <div className="input-box gap-2 flex flex-col">
-                  <span className="text-base tracking-wider font-semibold">
-                    Password
-                  </span>
-                  <input
-                    value={input.password}
-                    id="password"
-                    className="input"
-                    type="password"
-                    placeholder="Password"
-                    //name="password"
-                    onChange={handleOnChange}
-                  />
-
-                  {/* {errors.password && (
-                    <span className="text-danger">{errors.password}</span>
-                  )} */}
-                </div>
-              </div>
-              {/* <div className="py-4 d-flex justify-content-center align-items-center">
-                <button
-                  className="btn btn-outline-primary transition-all duration-500"
-                  type="submit"
-                >
-                  Sign up
-                </button>
-              </div> */}
-              <div className="py-4 d-flex justify-content-center align-items-center">
-                {/* {loading ? ( */}
-                <div className="loader"></div>
-                   {/* // Render the loader when loading is true */}
-                {/* ) : ( */}
-                  <button
-                    className="btn btn-outline-primary transition-all duration-500"
-                    type="submit"
-                  >
-                    Sign up
-                  </button>
-                {/* )} */}
-              </div>
-            </form>
           </div>
+          <div className=" hidden md:flex w-1/3  gradient h-100"></div>
         </div>
-      </div>
-      <div className=" hidden md:flex w-1/3  gradient h-100"></div>
-    </div>
+      )}
+    </>
   );
 }
 
