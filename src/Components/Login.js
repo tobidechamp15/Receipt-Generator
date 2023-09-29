@@ -46,7 +46,7 @@ function Login() {
           </span>
         </div>
         <div className="flex w-100 justify-center ">
-          <div className="control bg-white py-[5%] my-[5%] px-[2.5%] sm:w-4/5 xs:w-full md:w-[60%]">
+          <div className="control boxShadow  bg-white py-[5%] my-[5%] px-[2.5%] sm:w-1/2 xs:w-full md:w-[40%] lg:w-[30%]">
             <div className="flex flex-col justify-center items-center  gap-4 my-[2%]">
               <span className="text-xl font-semibold">Welcome Back !</span>
               <span className="text-sm">Sign in to continue</span>
@@ -59,6 +59,7 @@ function Login() {
                     Email
                   </span>
                   <input className="input" type="email" placeholder="Email" onChange={handleEmailChange} value={email}/>
+
                 </div>
                 <div className="input-box gap-2 flex flex-col">
                   <span className="text-base tracking-wider font-semibold">
@@ -66,16 +67,19 @@ function Login() {
                   </span>
                   <input className="input" type="text" placeholder="Password" onChange={handlePasswordChange} value={password}/>
                 </div>
-                <div className="text-danger">Forgot password?</div>
+                <div className="text-danger">
+                  <Link to="/ForgotPassword">Forgot password?</Link>
+                </div>
               </div>
               <div className="py-4 d-flex justify-content-center align-items-center">
                 <button className="btn btn-primary" type="submit">
                   <Link to="/home">Login</Link>
                 </button>
+
               </div>
               <div>
                 <span className="me-1">Don't have an account?</span>
-                <Link to="/">
+                <Link to="/signup">
                   <span className=" w-fit text-center text-green-500 font-medium transition-all duration-500 underline underline-offset-2">
                     Sign up
                   </span>
