@@ -11,9 +11,12 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
+
   function handleEmailChange(e) {
     setEmail(e.target.value);
+    setEmailError(null);
   }
 
   function handlePasswordChange(e) {
@@ -22,7 +25,9 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-
+    if (email) {
+      setEmailError("");
+    }
     // You can add validation here if needed
 
     // Make a POST request to your API
@@ -36,8 +41,12 @@ function Login() {
       })
       .catch((error) => {
         // Handle errors from the API
+        console.log("error is supposed to be displayed here");
         console.error("Error:", error);
         setError("Login failed"); // Set an error message if needed
+        if (error.response && error.response.status === 401) {
+          setEmailError("Email not registered"); // Set an error message for email
+        }
       })
       .finally(() => {
         setLoading(false);
@@ -73,8 +82,20 @@ function Login() {
                         type="email"
                         placeholder="Email"
                         onChange={handleEmailChange}
-                        value={email} required
+                        value={email}
+                        required
                       />
+                      <div
+                        className={`${
+                          emailError
+                            ? "bg-white border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                            : "none"
+                        }`}
+                        role="alert"
+                      >
+                        {/* <strong className="font-bold">Error:</strong> */}
+                        {emailError}
+                      </div>
                     </div>
                     <div className="input-box gap-2 flex flex-col">
                       <span className="text-base tracking-wider font-semibold">
@@ -85,7 +106,8 @@ function Login() {
                         type="text"
                         placeholder="Password"
                         onChange={handlePasswordChange}
-                        value={password} required
+                        value={password}
+                        required
                       />
                     </div>
                     <div className="text-danger">
@@ -93,8 +115,11 @@ function Login() {
                     </div>
                   </div>
                   <div className="py-4 d-flex justify-content-center align-items-center">
-                    <button className="btn btn-primary text-blue-500" type="submit">
-                  Login
+                    <button
+                      className="btn btn-primary text-blue-500"
+                      type="submit"
+                    >
+                      Login
                     </button>
                   </div>
                   <div>
