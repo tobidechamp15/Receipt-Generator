@@ -7,7 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 //Routing
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //Routes
 import Signup from "./Components/Signup";
@@ -15,40 +15,52 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
+import Invoicer from "./Components/Invoicer";
 import Dashboard from "./Components/Dashboard";
 
 // Create a router
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     // element: <h1 className='title'>Hello from React Router</h1>
     // element: <App />,
     element: <Login />,
   },
   {
-    path: '/signup',
+    path: "/signup",
     element: <Signup />,
   },
   {
-    path: '/dashboard',
-    element: <Dashboard />,
+    path: "/dashboard",
+    element: <Invoicer />,
+    children: [
+      {
+        path: "/dashboard/home",
+        element: <Home />,
+      },
+      {
+        path: "/dashboard/receipt",
+        element: <Dashboard />,
+      },
+    ],
   },
   {
-    path: '/home/receipt',
-    element: 
+    path: "/home/receipt",
+    element: (
       <Receipt
-        // descriptionValues={descriptionValues}
-        // customerName={customerName}
-        // address={address}
-      />,
+      // descriptionValues={descriptionValues}
+      // customerName={customerName}
+      // address={address}
+      />
+    ),
   },
   {
-    path: '/ForgotPassword',
-    element: <ForgotPassword />
+    path: "/ForgotPassword",
+    element: <ForgotPassword />,
   },
   {
-    path: '/home',
-    element: <Home />
+    path: "/home",
+    element: <Home />,
   },
 ]);
 
