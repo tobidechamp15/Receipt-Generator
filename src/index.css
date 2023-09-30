@@ -85,3 +85,8 @@ input[type="text"]::first-letter {
 .boxShadow {
   box-shadow: 10px 10px 10px rgb(203, 208, 209);
 }
+
+.active-tab {
+  color: #ff0000; /* Change the text color for active tabs */
+  background-color: #ffff00; /* Change the background color for active tabs */
+}
