@@ -34,7 +34,7 @@ const Settings = () => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <span>Email</span>
+            <span>Phone Number</span>
             <input
               type="number"
               className="input-box input"

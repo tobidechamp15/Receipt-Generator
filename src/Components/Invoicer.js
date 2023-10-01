@@ -40,13 +40,13 @@ const Invoicer = () => {
           <section className="text-lg font-bold  text-center">Menu</section>
 
           <NavLink
-            to="/invoicer/receipt"
+            to="/invoicer/profile"
             className={({ isActive }) =>
               `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
               `
             }
           >
-            Invoicer
+            Profile
           </NavLink>
           <NavLink
             to="/invoicer/home"
