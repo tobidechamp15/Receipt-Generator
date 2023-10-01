@@ -3,7 +3,7 @@ import "./ForgotPassword.css";
 import { Link } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
 
-function ForgotPassword() {
+const ForgotPassword = () => {
   return (
     <div className="reset-body">
       <div className="sub-body">
@@ -28,12 +28,12 @@ function ForgotPassword() {
             <Link to="/">
               <FaAngleLeft />
             </Link>
-              <span>Back to Login</span>
+            <span>Back to Login</span>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default ForgotPassword;

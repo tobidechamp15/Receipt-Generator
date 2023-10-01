@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NavLink, Outlet } from "react-router-dom";
-// import FontAwesomeIcon from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,36 +40,42 @@ const Invoicer = () => {
           <section className="text-lg font-bold  text-center">Menu</section>
 
           <NavLink
-            to="/dashboard/receipt"
+            to="/invoicer/receipt"
             className={({ isActive }) =>
-              `${
-                isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
+              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
               `
             }
           >
             Invoicer
           </NavLink>
           <NavLink
-            to="/dashboard/home"
+            to="/invoicer/home"
             className={({ isActive }) =>
-              `${
-                isActive ? "active-tab" : "text-blue-500"
-              } sideBar-tabs`
+              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
             }
           >
             <span className="-">Generate Receipt</span>
           </NavLink>
+          <NavLink
+            to="/invoicer/settings"
+            className={({ isActive }) =>
+              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
+            }
+          >
+            <span className="-">Settings</span>
+          </NavLink>
+          
         </div>
       </section>
-      <section className=" flex flex-col md:ms-[250px] h-screen">
+      <section className=" flex flex-col  md:ms-[250px] h-screen">
         <div className="flex w-100 b p-3 justify-between">
           <FontAwesomeIcon
             icon={faBars}
             onClick={toggleSidebar}
-            className="me-3 sm:hidden cursor-pointer text-3xl text-blue-700 hover:fa-spin"
+            className="me-3 md:hidden  cursor-pointer text-3xl text-blue-700 hover:fa-spin"
             spin
           />
-          <span className="text-xl xs:hidden font-bold">Receipt Generator</span>
+          <span className="text-xl xs:hidden font-bold"></span>
           <div>
             <FontAwesomeIcon
               icon={faUser}
@@ -78,8 +83,9 @@ const Invoicer = () => {
             />
           </div>
         </div>
-
-        <Outlet />
+        <div className="bg-white h-full">
+          <Outlet />
+        </div>
       </section>
     </section>
   );

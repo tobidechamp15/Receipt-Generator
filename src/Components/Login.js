@@ -5,7 +5,7 @@ import "./Login.css";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -36,7 +36,7 @@ function Login() {
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
-        navigate("/dashboard");
+        navigate("/invoicer");
         // setSuccessMessage("Login successful"); // Set a success message if needed
       })
       .catch((error) => {
@@ -138,6 +138,6 @@ function Login() {
       )}
     </>
   );
-}
+};
 
 export default Login;
