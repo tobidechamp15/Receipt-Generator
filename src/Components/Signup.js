@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import axiosInstance from "./axios/axios";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-// import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function Signup() {
   const [input, setInput] = useState({
@@ -14,21 +12,14 @@ function Signup() {
     password: "",
   });
   const [loading, setLoader] = useState(false);
-  const navigate = useNavigate();
-  // const [formData, setFormData] = useState({
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  // });
-  // // const [input, setInput] = useState({
-  // //   username: '',
-  // //   email: '',
-  // //   password: '',
-  // // });
   const [errors, setErrors] = useState({});
-  // const [loading, setLoading] = useState(false); // Add loading state
+  const [signUpError, setSignUpError] = useState("");
+  const navigate = useNavigate();
+
 
   const handleOnChange = (e) => {
+    setErrors({})
+    setSignUpError(null)
     setInput({ ...input, [e.target.id]: e.target.value });
   };
 
@@ -52,17 +43,11 @@ function Signup() {
       validationErrors.password = "password should be at least 6 characters";
     }
     setErrors(validationErrors);
-        setLoader(true);
-
+    
     if (Object.keys(validationErrors).length === 0) {
-      //       // window.location.href = '/login';
-      //       // button.link.href = "/login";
-      const requestData = {
-        username: input.username,
-        email: input.email,
-        password: input.password,
-      };
+      
       try {
+        setLoader(true);
         await axiosInstance.post("/auth/signup", input).then((res) => {
           console.log(res.data);
           setInput(res.data);
@@ -71,74 +56,16 @@ function Signup() {
         });
       } catch (err) {
         console.log(err);
+        if (err.response && err.response.status === 400) {
+          setSignUpError("User already exists")
+          
+        }
       } finally {
         setLoader(false);
       }
     }
   };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setLoading(true); // Set loading to true while waiting for response
-  //   setTimeout(() => {
-  //     const validationErrors = {};
-  //     if (!formData.username.trim()) {
-  //       validationErrors.username = 'Username is required';
-  //     }
-
-  //     if (!formData.email.trim()) {
-  //       validationErrors.email = 'Email is required';
-  //     } else if (/\S+@\S\.\S+/.test(formData.email)) {
-  //       validationErrors.email = 'Email is not valid';
-  //     }
-
-  //     if (!formData.password.trim()) {
-  //       validationErrors.password = 'password is required';
-  //     } else if (formData.password.length < 6) {
-  //       validationErrors.password = 'password should be at least 6 characters';
-  //     }
-
-  //     setErrors(validationErrors);
-  //     setLoading(false); // Set loading to false when the response is received
-
-  //     if (Object.keys(validationErrors).length === 0) {
-  //       // window.location.href = '/login';
-  //       // button.link.href = "/login";
-  //       const requestData = {
-  //         username: formData.username,
-  //         email: formData.email,
-  //         password: formData.password,
-  //       };
-  //       axios
-  //         .post('http://localhost:6002/api/auth/signup', requestData, {
-  //           headers: {
-  //             'Content-Type': 'application/json', // Set the content type header
-  //           },
-  //         })
-  //         .then((response) => {
-  //           console.log(response.json); // Handle the response data as needed
-  //           // Redirect to the login page or do something else
-  //         })
-  //         .catch((error) => {
-  //           console.error('Error:', error);
-  //         });
-  //     }
-  //   }, 5000); // Simulated 2-second delay, replace with your actual API call
-  // };
-
-  // const isButtonDisabled =
-  //   !formData.username.trim() ||
-  //   !formData.email.trim() ||
-  //   !formData.password.trim();
-
+ 
   return (
     <>
       {loading ? (
@@ -149,7 +76,7 @@ function Signup() {
             <div className="nav flex items-center fixed top-0 w-100">
               <h3 className="font-semibold ">Receipt Generator</h3>
               <h3>
-                <span className="hidden">Already have an account? </span>
+                <span className="flex ">Already have an account? </span>
                 <span className="login-button btn btn-outline-primary lg:text-white">
                   <Link to="/">Log in</Link>
                 </span>
@@ -182,14 +109,25 @@ function Signup() {
                         onChange={handleOnChange}
                       />
                       {errors.username && (
-                    <span className="text-danger">{errors.username}</span>
-                  )}
+                        <span className="text-danger">{errors.username}</span>
+                      )}
                     </div>
 
                     <div className="input-box gap-2 flex flex-col">
                       <span className="text-base tracking-wider font-semibold">
                         Email
                       </span>
+                      <div
+                        className={`${
+                          signUpError
+                            ? "bg-red-400 border border-red-400 text-white px-3 py-1 rounded relative"
+                            : "hidden"
+                        }`}
+                        role="alert"
+                      >
+                        <strong className="font-bold">Error:  </strong>
+                        {signUpError}
+                      </div>
                       <input
                         value={input.email}
                         id="email"
@@ -200,8 +138,8 @@ function Signup() {
                         onChange={handleOnChange}
                       />
                       {errors.email && (
-                    <span className="text-danger">{errors.email}</span>
-                  )}
+                        <span className="text-danger">{errors.email}</span>
+                      )}
                     </div>
 
                     <div className="input-box gap-2 flex flex-col">
@@ -219,8 +157,8 @@ function Signup() {
                       />
 
                       {errors.password && (
-                    <span className="text-danger">{errors.password}</span>
-                  )}
+                        <span className="text-danger">{errors.password}</span>
+                      )}
                     </div>
                   </div>
 

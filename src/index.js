@@ -17,6 +17,7 @@ import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
 import Invoicer from "./Components/Invoicer";
 import Dashboard from "./Components/Dashboard";
+import Settings from "./Components/Settings";
 
 // Create a router
 const router = createBrowserRouter([
@@ -31,16 +32,24 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: "/dashboard",
+    path: "/invoicer",
     element: <Invoicer />,
     children: [
       {
-        path: "/dashboard/home",
+        path: "/invoicer/home",
         element: <Home />,
       },
       {
-        path: "/dashboard/receipt",
+        path: "/invoicer/profile",
         element: <Dashboard />,
+      },
+      {
+        path: "/invoicer/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/invoicer/settings",
+        element: <Settings />,
       },
     ],
   },
