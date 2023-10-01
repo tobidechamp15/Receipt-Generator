@@ -36,7 +36,7 @@ const Login = () => {
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
-        navigate("/invoicer");
+        navigate("/invoicer/profile");
         // setSuccessMessage("Login successful"); // Set a success message if needed
       })
       .catch((error) => {
