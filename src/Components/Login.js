@@ -4,6 +4,8 @@ import axiosInstance from "./axios/axios";
 import "./Login.css";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +14,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [networkError, setNetworkError] = useState("");
   const navigate = useNavigate();
 
   function handleEmailChange(e) {
@@ -47,6 +50,9 @@ const Login = () => {
         if (error.response && error.response.status === 401) {
           setEmailError("Email not registered"); // Set an error message for email
         }
+        if (error.request.status === 0) {
+          setNetworkError("Check your connection");
+        }
       })
       .finally(() => {
         setLoading(false);
@@ -54,10 +60,20 @@ const Login = () => {
   }
   return (
     <>
+      <div
+        className={`${
+          networkError
+            ? "h-screen flex absolute bg-gray-200 w-full opacity-75  text-5xl justify-center items-center text-red-700 font-bold gap-2 flex-col  "
+            : "none"
+        }`}
+      >
+        <FontAwesomeIcon icon={faCircleExclamation} bounce/>
+        {networkError} 
+      </div>
       {loading ? (
         <Loader />
       ) : (
-        <div className="flex flex-col h-screen container-fluid">
+        <div className="flex flex-col h-screen container-fluid ">
           <div className="h-full ">
             <div className="flex justify-center items-center">
               <span className="font-semibold text-xl my-[3.8%]">
