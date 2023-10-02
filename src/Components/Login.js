@@ -64,11 +64,11 @@ const Login = () => {
         className={`${
           networkError
             ? "h-screen flex absolute bg-gray-200 w-full opacity-75  text-5xl justify-center items-center text-red-700 font-bold gap-2 flex-col  "
-            : "none"
+            : "hidden"
         }`}
       >
-        <FontAwesomeIcon icon={faCircleExclamation} bounce/>
-        {networkError} 
+        <FontAwesomeIcon icon={faCircleExclamation} bounce />
+        {networkError}
       </div>
       {loading ? (
         <Loader />
@@ -105,7 +105,7 @@ const Login = () => {
                         className={`${
                           emailError
                             ? "bg-white border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                            : "none"
+                            : "hidden"
                         }`}
                         role="alert"
                       >

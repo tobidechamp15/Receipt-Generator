@@ -70,20 +70,20 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   },
   {
-    path: '/ForgotPassword',
-    element: <ForgotPassword />
+    path: "/ForgotPassword",
+    element: <ForgotPassword />,
   },
   {
-    path: '/ResetCode',
-    element: <ResetCode />
+    path: "/ResetCode",
+    element: <ResetCode />,
   },
   {
-    path: '/ResetPassword',
-    element: <ResetPassword />
-  }
-    path: "/home",
-    element: <Home />,
+    path: "/ResetPassword",
+    element: <ResetPassword />,
   },
+  //   path: "/home",
+  //   element: <Home />,
+  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
