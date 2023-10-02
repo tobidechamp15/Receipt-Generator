@@ -1,0 +1,52 @@
+.code-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.code-body .code-sub-body{
+  border-radius: 5px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 20px 20px 20px lightblue;
+}
+
+.code-sub-body .title{
+  text-align: center;
+}
+
+.code-sub-body .input-boxx{
+  width: 310px;
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.input-boxx .code-message{
+  text-align: center;
+  color: #9e9e9e;
+  font-size: 14px;
+}
+
+.digit-input {
+  max-width: 190px;
+  width: 40px;
+  height: 40px;
+  outline: none;
+  margin: 5px;
+  transition: .5s;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid #9e9e9e;
+}

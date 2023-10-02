@@ -15,6 +15,8 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
+import ResetCode from "./Components/ResetCode";
+import ResetPassword from "./Components/ResetPassword";
 
 // Create a router
 const router = createBrowserRouter([
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
   {
     path: '/ForgotPassword',
     element: <ForgotPassword />
+  },
+  {
+    path: '/ResetCode',
+    element: <ResetCode />
+  },
+  {
+    path: '/ResetPassword',
+    element: <ResetPassword />
   }
 ]);
 
