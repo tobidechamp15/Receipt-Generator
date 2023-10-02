@@ -7,7 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 //Routing
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //Routes
 import Signup from "./Components/Signup";
@@ -17,31 +17,57 @@ import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetCode from "./Components/ResetCode";
 import ResetPassword from "./Components/ResetPassword";
+import Invoicer from "./Components/Invoicer";
+import Dashboard from "./Components/Dashboard";
+import Settings from "./Components/Settings";
 
 // Create a router
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     // element: <h1 className='title'>Hello from React Router</h1>
     // element: <App />,
     element: <Login />,
   },
   {
-    path: '/signup',
+    path: "/signup",
     element: <Signup />,
   },
   {
-    path: '/home',
-    element: <Home />,
+    path: "/invoicer",
+    element: <Invoicer />,
+    children: [
+      {
+        path: "/invoicer/home",
+        element: <Home />,
+      },
+      {
+        path: "/invoicer/profile",
+        element: <Dashboard />,
+      },
+      {
+        path: "/invoicer/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/invoicer/settings",
+        element: <Settings />,
+      },
+    ],
   },
   {
-    path: '/home/receipt',
-    element: 
+    path: "/home/receipt",
+    element: (
       <Receipt
-        // descriptionValues={descriptionValues}
-        // customerName={customerName}
-        // address={address}
-      />,
+      // descriptionValues={descriptionValues}
+      // customerName={customerName}
+      // address={address}
+      />
+    ),
+  },
+  {
+    path: "/ForgotPassword",
+    element: <ForgotPassword />,
   },
   {
     path: '/ForgotPassword',
@@ -55,6 +81,9 @@ const router = createBrowserRouter([
     path: '/ResetPassword',
     element: <ResetPassword />
   }
+    path: "/home",
+    element: <Home />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

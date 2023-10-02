@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  transition: .5s ease-in-out;
   /* color: rgb(45, 97, 133);2 */
 
   font-family: Droid sans;
@@ -13,11 +14,11 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-input[type='text']::first-letter {
+input[type="text"]::first-letter {
   text-transform: uppercase !important;
 }
 
@@ -75,6 +76,30 @@ input[type='text']::first-letter {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.boxShadow {
+  box-shadow: 10px 10px 10px rgb(203, 208, 209);
+}
+
+.active-tab {
+  color: #fff; /* Change the text color for active tabs */
+  background-color: #7482f6; /* Change the background color for active tabs */
+  font-size: larger;
+  border-left: 3px solid;
+  transition: ease-in-out .5s;
+
+}
+
+.sideBar-tabs {
+  padding: 8px 24px;
+    transition: ease-in-out .5s;
+
+  border-bottom: none !important ;
+  width: 100% !important;
 }

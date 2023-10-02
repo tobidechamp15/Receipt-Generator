@@ -3,7 +3,7 @@ import "./ForgotPassword.css";
 import { Link } from "react-router-dom";
 
 
-function ForgotPassword() {
+const ForgotPassword = () => {
   return (
     <div className="reset-body">
       <div className="sub-body">
@@ -26,11 +26,12 @@ function ForgotPassword() {
           </div>
           <div className="login-reroute">
             <Link to="/">Back to Login</Link>
+
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default ForgotPassword;

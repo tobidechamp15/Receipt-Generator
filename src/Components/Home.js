@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Description from './Product';
-import Receipt from './Receipt';
-import TotalAmount from './TotalAmount';
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import Description from "./Product";
+import Receipt from "./Receipt";
+import TotalAmount from "./TotalAmount";
 
-function Home() {
+const Home = () => {
   const [descriptionValues, setDescriptionValues] = useState([]);
   const [Products, setProducts] = useState([]);
-  const [customerName, setCustomerName] = useState('');
-  const [address, setAddress] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState(''); // Added paymentMethod state
+  const [customerName, setCustomerName] = useState("");
+  const [address, setAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState(""); // Added paymentMethod state
 
   const addItem = () => {
     setProducts((prevProducts) => [
@@ -45,8 +43,8 @@ function Home() {
   const [showInvoice, setShowInvoice] = useState(false);
 
   useEffect(() => {
-    const storedCustomerName = localStorage.getItem('customerName');
-    const storedAddress = localStorage.getItem('address');
+    const storedCustomerName = localStorage.getItem("customerName");
+    const storedAddress = localStorage.getItem("address");
 
     if (storedCustomerName) {
       setCustomerName(storedCustomerName);
@@ -59,11 +57,11 @@ function Home() {
 
   // Update localStorage whenever customerName or address changes
   useEffect(() => {
-    localStorage.setItem('customerName', customerName);
-    localStorage.setItem('address', address);
-    localStorage.setItem('paymentMethod', paymentMethod); // Added paymentMethod to localStorage
+    localStorage.setItem("customerName", customerName);
+    localStorage.setItem("address", address);
+    localStorage.setItem("paymentMethod", paymentMethod); // Added paymentMethod to localStorage
   }, [customerName, address, paymentMethod]);
-  console.log(paymentMethod);
+  // console.log(paymentMethod);
 
   return (
     <>
@@ -77,12 +75,15 @@ function Home() {
         />
       ) : (
         <section className="w-full h-full">
-          <Navbar />
-          <div className="flex justify-center items-center h-fit flex-col mt-[61px]">
-            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:pt-[30%] sm:mt-[10%] md:w-2/4 lg:w-1/3 bg-slate-100 border border-black md:rounded-3xl">
+          {/* <Navbar /> */}
+          <div className="flex justify-center items-center h-fit flex-col  m-[5%]">
+            <div className="text-xl font-bold w-100 ">NEW RECEIPT</div>
+            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:mt-[30%] sm:mt-[10%]  lg:w-2/3 bg-slate-    md:rounded-3xl">
               {/* ... (Company and Customer input fields) */}
               <div className="flex flex-col bg--200 rounded-md w-full gap-2">
-                <p className="text-base  font-">Customers name</p>
+                <p className="text-lg font-extrabold  tracking-wider  font-">
+                  Customers name
+                </p>
                 <input
                   type="text"
                   value={customerName}
@@ -92,7 +93,9 @@ function Home() {
                 />
               </div>
               <div className="flex flex-col bg--200 rounded-md w-full  gap-2">
-                <p className="text-base ">Address</p>
+                <p className="text-lg font-extrabold  tracking-wider ">
+                  Address
+                </p>
                 <input
                   type="text"
                   value={address}
@@ -102,12 +105,14 @@ function Home() {
                 />
               </div>
               <div className="flex flex-col bg--200 rounded-md w-full gap-2">
-                <p className="text-base">Payment Method</p>
+                <p className="text-lg font-extrabold  tracking-wider">
+                  Payment Method
+                </p>
                 <select
                   value={paymentMethod}
                   onChange={(e) => handleFormChange(e, setPaymentMethod)}
                   className="transition-all duration-300 hover:shadow-md focus:ring focus:ring-opacity-50 focus:ring-blue-500 rounded-md outline-none bg-gray-200 text-lg placeholder:text-gray-400 border-slate-300  py-2 px-1"
-                  >
+                >
                   <option value="">Select Payment Method</option>
                   <option value="Debit Card">Debit Card</option>
                   <option value="Cash">Cash</option>
@@ -136,7 +141,7 @@ function Home() {
                 <button
                   // onClick={ }
                   className={`btn btn-success text-white ${
-                    isSaveButtonDisabled ? 'disabled' : ''
+                    isSaveButtonDisabled ? "disabled" : ""
                   }`}
                   disabled={isSaveButtonDisabled}
                 >
@@ -146,7 +151,7 @@ function Home() {
                 <button
                   onClick={() => setShowInvoice(true)}
                   className={`btn btn-success w-full ${
-                    isSaveButtonDisabled ? 'disabled ' : ''
+                    isSaveButtonDisabled ? "disabled " : ""
                   }`}
                   disabled={isSaveButtonDisabled}
                 >
@@ -165,6 +170,6 @@ function Home() {
       )}
     </>
   );
-}
+};
 
 export default Home;

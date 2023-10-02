@@ -26,5 +26,10 @@
         "titleBar.border": "#007fff",
         "titleBar.inactiveBackground": "#007fff99",
         "titleBar.inactiveForeground": "#e7e7e799"
-    }
+    },
+    "cSpell.words": [
+        "fontawesome",
+        "fortawesome",
+        "Invoicer"
+    ]
 }
