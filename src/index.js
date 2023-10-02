@@ -15,6 +15,8 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Receipt from "./Components/Receipt";
 import ForgotPassword from "./Components/ForgotPassword";
+import ResetCode from "./Components/ResetCode";
+import ResetPassword from "./Components/ResetPassword";
 import Invoicer from "./Components/Invoicer";
 import Dashboard from "./Components/Dashboard";
 import Settings from "./Components/Settings";
@@ -68,6 +70,17 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   },
   {
+    path: '/ForgotPassword',
+    element: <ForgotPassword />
+  },
+  {
+    path: '/ResetCode',
+    element: <ResetCode />
+  },
+  {
+    path: '/ResetPassword',
+    element: <ResetPassword />
+  }
     path: "/home",
     element: <Home />,
   },
