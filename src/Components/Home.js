@@ -62,9 +62,11 @@ const Home = () => {
     localStorage.setItem("paymentMethod", paymentMethod); // Added paymentMethod to localStorage
   }, [customerName, address, paymentMethod]);
   // console.log(paymentMethod);
-  const handleShowInvoice = () => {
-    setShowInvoice(false);
-  };
+
+  
+    const handleHideInvoice = () => {
+      setShowInvoice(false);
+    };
   return (
     <>
       {showInvoice ? (
@@ -74,7 +76,7 @@ const Home = () => {
           customerName={customerName}
           address={address}
           paymentMethod={paymentMethod}
-          onClick={handleShowInvoice}
+          hideInvoice={handleHideInvoice}
         />
       ) : (
         <section className="w-full h-full">

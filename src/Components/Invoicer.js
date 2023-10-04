@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { NavLink, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
-
+import Logout from "./Logout";
 import menu from "../assets/menu-ham.png";
 
 const Invoicer = () => {
@@ -36,35 +36,38 @@ const Invoicer = () => {
         ref={sidebarRef}
         id="side-bar"
       >
-        <div className="w-100 flex flex-col self-center gap-2 ">
+        <div className="w-100 flex flex-col self-center gap-2 h-full">
           <section className="text-lg font-bold  text-center">Menu</section>
-
-          <NavLink
-            to="/invoicer/profile"
-            className={({ isActive }) =>
-              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
+          <div className="flex flex-col w-100 h-full justify-between">
+            <section className="flex flex-col ">
+              <NavLink
+                to="/invoicer/profile"
+                className={({ isActive }) =>
+                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
               `
-            }
-          >
-            Profile
-          </NavLink>
-          <NavLink
-            to="/invoicer/home"
-            className={({ isActive }) =>
-              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
-            }
-          >
-            <span className="-">Generate Receipt</span>
-          </NavLink>
-          <NavLink
-            to="/invoicer/settings"
-            className={({ isActive }) =>
-              `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
-            }
-          >
-            <span className="-">Settings</span>
-          </NavLink>
-          
+                }
+              >
+                Profile
+              </NavLink>
+              <NavLink
+                to="/invoicer/home"
+                className={({ isActive }) =>
+                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
+                }
+              >
+                <span className="-">Generate Receipt</span>
+              </NavLink>
+              <NavLink
+                to="/invoicer/settings"
+                className={({ isActive }) =>
+                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
+                }
+              >
+                <span className="-">Settings</span>
+              </NavLink>
+            </section>
+          <><Logout /></>
+          </div>
         </div>
       </section>
       <section className=" flex flex-col  md:ms-[250px] h-screen">

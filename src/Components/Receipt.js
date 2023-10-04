@@ -5,7 +5,7 @@ const Receipt = ({
   customerName,
   address,
   paymentMethod,
-  handleShowInvoice,
+  hideInvoice,
 }) => {
   const divStyle = {
     fontFamily: 'Arial, san-serif',
@@ -104,7 +104,7 @@ const Receipt = ({
             Print
           </button>
           <button
-            onClick={handleShowInvoice}
+            onClick={hideInvoice}
             className="btn btn-outline-warning w-auto "
           >
             Back
