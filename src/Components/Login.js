@@ -104,7 +104,7 @@ const Login = () => {
                       <div
                         className={`${
                           emailError
-                            ? "bg-white border border-red-400 text-red-800 px-4 py-3 rounded relative"
+                            ? "bg-white border border-red-400 text-red-700 px-4 py-3 rounded relative"
                             : "hidden"
                         }`}
                         role="alert"
