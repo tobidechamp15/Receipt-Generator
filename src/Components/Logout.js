@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const Logout = () => {
     const handleLogout = () => {
         localStorage.removeItem("token");
-        Navigate()
+        
 }
   return (
     <NavLink
