@@ -119,7 +119,7 @@ const Login = () => {
                       </span>
                       <input
                         className="input"
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         onChange={handlePasswordChange}
                         value={password}

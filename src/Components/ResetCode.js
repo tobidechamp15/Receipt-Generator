@@ -68,34 +68,31 @@
 //   );
 // }
 
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+} from "react";
+
+
 import "./ResetCode.css";
-import Loader from "./Loader";
-import { Link } from "react-router-dom";
+
 
 export default function ResetCode() {
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-      // Simulate a delay (e.g., an API call) for demonstration purposes
-      setTimeout(() => {
-        setIsLoading(false); // Set loading to false when the data is ready
-      }, 2000); // Simulated 2-second delay
-    }, []);
-
+  useEffect(() => {
+    // Simulate a delay (e.g., an API call) for demonstration purposes
+    setTimeout(() => {
+      setIsLoading(false); // Set loading to false when the data is ready
+    }, 2000); // Simulated 2-second delay
+  }, []);
 
   const inputRefs = Array(6)
     .fill(0)
-    .map((_, index) => useRef(null));
+    .map(() => useRef(null));
 
   const [completeCode, setCompleteCode] = useState(""); // State variable to store the complete code
-  const [inputsDisabled, setInputsDisabled] = useState(false); // State variable to enable/disable inputs
-
-  useEffect(() => {
-    // Check if all inputs have values to disable them
-    const allInputsFilled = inputRefs.every((ref) => ref.current.value !== "");
-    setInputsDisabled(allInputsFilled);
-  }, [completeCode]);
 
   const handleInputChange = (e, index) => {
     const input = e.target;
@@ -103,16 +100,18 @@ export default function ResetCode() {
     const nextIndex = index + 1;
 
     if (input.value === "") {
-      // If the input is empty and the user presses backspace, move focus to the previous input
-      if (e.keyCode === 8 && prevIndex >= 0) {
-        inputRefs[prevIndex].current.focus();
+      // If the input is empty, disable the next input
+      if (nextIndex < inputRefs.length) {
+        inputRefs[nextIndex].current.disabled = true;
       }
-    } else if (/^\d$/.test(input.value) && nextIndex < inputRefs.length) {
-      // If the input is a digit, move focus to the next input
-      inputRefs[nextIndex].current.focus();
+    } else {
+      // If the input is not empty, enable the next input and set the value
+      inputRefs[nextIndex]?.current?.focus();
+      inputRefs[nextIndex]?.current?.removeAttribute("disabled");
     }
 
-    // Call a function to update the complete code when any input changes
+    // Update the input value and call a function to update the complete code
+    inputRefs[index].current.value = input.value;
     updateCompleteCode();
   };
 
@@ -120,11 +119,20 @@ export default function ResetCode() {
     const codeArray = inputRefs.map((ref) => ref.current.value);
     const code = codeArray.join(""); // Concatenate the digit inputs
     setCompleteCode(code); // Update the state variable
+
+    // Check if all inputs are filled, and if so, disable all inputs
+    const allInputsFilled = codeArray.every((value) => value !== "");
+    if (allInputsFilled) {
+      inputRefs.forEach((ref) => (ref.current.disabled = true));
+
+       window.location.href = "/ResetPassword";
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     console.log("Complete Code:", completeCode); // Log the complete code
+
   };
 
   return (
@@ -141,18 +149,18 @@ export default function ResetCode() {
                   type="text"
                   maxLength="1"
                   ref={inputRef}
-                  onKeyDown={(e) => handleInputChange(e, index)}
+                  onKeyUp={(e) => handleInputChange(e, index)}
                   className="digit-input"
-                  disabled={inputsDisabled} // Disable inputs when all are filled
+                  disabled={index !== 0} // Disable all inputs except the first one initially
                 />
               ))}
             </div>
-          </div>
-          <div>
-            <Loader loading={isLoading} />
           </div>
         </form>
       </div>
     </div>
   );
 }
+
+
+
