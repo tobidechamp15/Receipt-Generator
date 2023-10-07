@@ -5,7 +5,7 @@ import "./Login.css";
 const Settings = () => {
   return (
     <div className="w-100 flex justify-center">
-      <div className="boxShadow control bg-white p-[5%] sm:w-1/2 xs:w-full md:w-[70%] lg:w-[70%] xl:w-[50%]">
+      <div className="boxShadow control bg-white p-[5%] m-[5%] sm:w-1/2 xs:w-full md:w-[70%] lg:w-[70%] xl:w-[50%]">
         <form className=" flex  flex-col gap-2">
           <div className="flex flex-col gap-2">
             <span>Company Name</span>

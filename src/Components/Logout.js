@@ -14,7 +14,7 @@ const Logout = () => {
           onClick={handleLogout}
       className="flex gap-2 cursor-pointer hover:text-white hover:bg-red-600 ease-in-out duration-500 items-center w-100 my-4 p-2 mb-0 text-red-600 font-bold text-xl justify-center"
     >
-      <FontAwesomeIcon icon={faRightFromBracket} flip="" />
+      <FontAwesomeIcon icon={faRightFromBracket}  />
       <span className="">Log out</span>
     </NavLink>
   );

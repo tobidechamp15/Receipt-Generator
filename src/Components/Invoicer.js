@@ -30,13 +30,13 @@ const Invoicer = () => {
   return (
     <section className="w-100">
       <section
-        className={`flex w-[250px]   bg-white  text flex-col h-screen z-50 fixed transition-all ease-in-out duration-700 ${
+        className={`flex w-[250px]   bg-gray-50  flex-col h-screen shadow-lg z-50 fixed transition-all ease-in-out duration-700 ${
           sidebarOpen ? "left-0  " : "xsm:-left-[250px]"
         }`}
         ref={sidebarRef}
         id="side-bar"
       >
-        <div className="w-100 flex flex-col self-center gap-2 h-full">
+        <div className="w-100 flex flex-col self-center gap-2 h-full ">
           <section className="text-lg font-bold  text-center">Menu</section>
           <div className="flex flex-col w-100 h-full justify-between">
             <section className="flex flex-col ">
@@ -65,8 +65,12 @@ const Invoicer = () => {
               >
                 <span className="-">Settings</span>
               </NavLink>
+              
             </section>
-          <><Logout /></>
+
+            <>
+              <Logout />
+            </>
           </div>
         </div>
       </section>
