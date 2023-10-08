@@ -103,3 +103,10 @@ input[type="text"]::first-letter {
   border-bottom: none !important ;
   width: 100% !important;
 }
+
+.hm{
+transition: .7s ease-in-out;
+}
+.rotate{
+  transform: rotate(90deg);
+}

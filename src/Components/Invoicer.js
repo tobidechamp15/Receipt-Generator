@@ -1,18 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { NavLink, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faBars,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
 import Logout from "./Logout";
-import menu from "../assets/menu-ham.png";
 
 const Invoicer = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // Track active dropdown
+
   const sidebarRef = useRef(null);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
@@ -26,6 +32,26 @@ const Invoicer = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  const handleDropdownClick = (index) => {
+    // Toggle the dropdown when its title is clicked
+    setActiveDropdown((prev) => (prev === index ? null : index));
+  };
+  const closeAllDropdowns = () => {
+    setActiveDropdown(null);
+  };
+
+  const dropdownData = [
+    {
+      title: "Profile Menu 1",
+      items: ["Item 1", "Item 2"],
+    },
+    {
+      title: "Profile Menu 2",
+      items: ["Item A", "Item B"],
+    },
+    // Add more dropdown data as needed
+  ];
 
   return (
     <section className="w-100">
@@ -65,9 +91,39 @@ const Invoicer = () => {
               >
                 <span className="-">Settings</span>
               </NavLink>
-              
+              <ul className="list list-non w-full flex gap-2 flex-col items-center   transition-all ease-in-out duration-500">
+                {dropdownData.map((dropdown, index) => (
+                  <li
+                    className="w-full flex flex-col hm bg-slate-200 p-[5%]"
+                    key={index}
+                  >
+                    <div
+                      className="flex  items-center justify-between w-full transition-all ease-in-out duration-500"
+                      onClick={() => handleDropdownClick(index)}
+                    >
+                      {dropdown.title}
+                      <FontAwesomeIcon
+                        icon={faChevronRight}
+                        className={`icon ${
+                          activeDropdown === index ? "rotate" : ""
+                        }`}
+                      />
+                    </div>
+                    <div
+                      className={`${
+                        activeDropdown === index
+                          ? "dropdown-content dropdown-open flex flex-col"
+                          : "dropdown-content dropdown-transition flex flex-col"
+                      }`}
+                    >
+                      {dropdown.items.map((item, itemIndex) => (
+                        <span key={itemIndex}>{item}</span>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </section>
-
             <>
               <Logout />
             </>
