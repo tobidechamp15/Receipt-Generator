@@ -11,7 +11,7 @@ import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
 const Dropdown = () => {
   return (
-    <div className="flex flex-col px-2 py-1 bg-white text-blue-400 text-sm sm:rounded-xl  absolute top-[70px] right-0  duration-500 ease-in-out delay delay-700 w-full sm:w-fit sm:right-[20px] ">
+    <div className="flex flex-col px-2 py-1 bg-white text-blue-400 text-sm sm:rounded-xl  ">
       <ul className="flex flex-col g">
         <Link to="/invoicer">
           <li className="flex gap-3  items-center cursor-pointer fw-bold  text-sm hover:bg-gray-200  hover:rounded-xl  px-8 duration-500 py-1">
