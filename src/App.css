@@ -15,15 +15,15 @@ input {
 .dropdown-open {
   transition-duration: 0.5s; /* Adjust the duration as needed */
   transition-timing-function: ease-in-out;
-
+  background: rgb(226, 223, 235);
   max-height: fit-content; /* Adjust the max height as needed */
   opacity: 1;
 }
 .dropdown-open span {
   display: block;
-  color: #9587e2;
+  color: #7482f6;
   text-decoration: none;
-  padding: 10px 10px ;
+  padding: 10px 10px;
   transition: background-color 0.3s;
 }
 .icon {
@@ -32,9 +32,9 @@ input {
   /* transform: rotate(90deg); */
 }
 .dropdown-open span:hover {
-  background-color: #9587e2; /* Darker blue for the active link */
+  /* background-color: #7482f6; Darker blue for the active link */
   font-weight: bold;
-  transition: .5s;
+  transition: 0.5s;
   color: white;
   cursor: pointer;
 }

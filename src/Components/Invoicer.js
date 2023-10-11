@@ -44,7 +44,7 @@ const Invoicer = () => {
   const dropdownData = [
     {
       title: "Profile Menu 1",
-      items: ["Item 1", "Item 2"],
+      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
     },
     {
       title: "Profile Menu 2",
@@ -69,7 +69,7 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/profile"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs
+                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs
               `
                 }
               >
@@ -78,7 +78,7 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/home"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
+                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs`
                 }
               >
                 <span className="-">Generate Receipt</span>
@@ -86,19 +86,19 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/settings"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500"} sideBar-tabs`
+                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs`
                 }
               >
                 <span className="-">Settings</span>
               </NavLink>
-              <ul className="list list-non w-full flex gap-2 flex-col items-center   transition-all ease-in-out duration-500">
+              <ul className="list mt-2 list-non w-full flex gap-2 flex-col items-center   transition-all ease-in-out duration-500">
                 {dropdownData.map((dropdown, index) => (
                   <li
-                    className="w-full flex flex-col hm bg-slate-200 p-[5%]"
+                    className="w-full flex flex-col hm text-blue-500  hover:text-white hover:bg-blue-500"
                     key={index}
                   >
                     <div
-                      className="flex  items-center justify-between w-full transition-all ease-in-out duration-500"
+                      className="flex  items-center justify-between w-full p-[5%] transition-all ease-in-out duration-500"
                       onClick={() => handleDropdownClick(index)}
                     >
                       {dropdown.title}
