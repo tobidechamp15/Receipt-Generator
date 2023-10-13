@@ -19,7 +19,7 @@ input {
   max-height: fit-content; /* Adjust the max height as needed */
   opacity: 1;
 }
-.dropdown-open span {
+.dropdown-open a {
   display: block;
   color: #7482f6;
   text-decoration: none;
@@ -31,10 +31,11 @@ input {
   cursor: pointer;
   /* transform: rotate(90deg); */
 }
-.dropdown-open span:hover {
+.dropdown-open a:hover {
   /* background-color: #7482f6; Darker blue for the active link */
   font-weight: bold;
   transition: 0.5s;
   color: white;
   cursor: pointer;
 }
+

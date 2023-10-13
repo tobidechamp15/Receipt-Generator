@@ -43,8 +43,16 @@ const Invoicer = () => {
 
   const dropdownData = [
     {
-      title: "Profile Menu 1",
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+      title: "Profile Settings",
+      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
+    },
+    {
+      title: "Profile Settings",
+      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
+    },
+    {
+      title: "Profile Settings",
+      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
     },
     {
       title: "Profile Menu 2",
@@ -69,7 +77,11 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/profile"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs
+                  `${
+                    isActive
+                      ? "active-tab"
+                      : "text-blue-500 hover:text-white hover:bg-blue-500"
+                  } sideBar-tabs
               `
                 }
               >
@@ -78,7 +90,11 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/home"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs`
+                  `${
+                    isActive
+                      ? "active-tab"
+                      : "text-blue-500 hover:text-white hover:bg-blue-500"
+                  } sideBar-tabs`
                 }
               >
                 <span className="-">Generate Receipt</span>
@@ -86,7 +102,11 @@ const Invoicer = () => {
               <NavLink
                 to="/invoicer/settings"
                 className={({ isActive }) =>
-                  `${isActive ? "active-tab" : "text-blue-500 hover:text-white hover:bg-blue-500"} sideBar-tabs`
+                  `${
+                    isActive
+                      ? "active-tab"
+                      : "text-blue-500 hover:text-white hover:bg-blue-500"
+                  } sideBar-tabs`
                 }
               >
                 <span className="-">Settings</span>
@@ -98,26 +118,42 @@ const Invoicer = () => {
                     key={index}
                   >
                     <div
-                      className="flex  items-center justify-between w-full p-[5%] transition-all ease-in-out duration-500"
+                      className={`${
+                        activeDropdown === index
+                          ? "bg-blue-500 text-white w-100 "
+                          : ""
+                      } flex  items-center justify-between w-full  transition-all ease-in-out duration-500 cursor-pointer`}
                       onClick={() => handleDropdownClick(index)}
                     >
-                      {dropdown.title}
+                      <span
+                        className={
+                          activeDropdown === index
+                            ? "bg-blue-500 text-white w-100 p-[5%] cursor-pointer"
+                            : "p-[5%] cursor-pointer"
+                        }
+                      >
+                        {dropdown.title}
+                      </span>
                       <FontAwesomeIcon
                         icon={faChevronRight}
                         className={`icon ${
-                          activeDropdown === index ? "rotate" : ""
+                          activeDropdown === index
+                            ? "rotate p-[5%]  text-white  text-justify"
+                            : " p-[5%] "
                         }`}
                       />
                     </div>
                     <div
                       className={`${
                         activeDropdown === index
-                          ? "dropdown-content dropdown-open flex flex-col"
+                          ? "dropdown-content dropdown-open flex flex-col p-[5%]"
                           : "dropdown-content dropdown-transition flex flex-col"
                       }`}
                     >
                       {dropdown.items.map((item, itemIndex) => (
-                        <span key={itemIndex}>{item}</span>
+                        <NavLink key={itemIndex} className="p-3">
+                          {item}
+                        </NavLink>
                       ))}
                     </div>
                   </li>
