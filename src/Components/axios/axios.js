@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: 'https://generatinginvoiceapp.onrender.com/api', // Your API base URL
+  baseURL: "https://receipt-6j94.onrender.com/api/", // Your API base URL
 });
 
 export default axiosInstance;

@@ -35,7 +35,7 @@ const Login = () => {
 
     // Make a POST request to your API
     axiosInstance
-      .post("/auth/signIn", { email, password })
+      .post("auth/signIn", { email, password })
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
@@ -94,7 +94,7 @@ const Login = () => {
                         Email
                       </span>
                       <input
-                        className="input"
+                        className="input form-control"
                         type="email"
                         placeholder="Email"
                         onChange={handleEmailChange}
@@ -118,7 +118,7 @@ const Login = () => {
                         Password
                       </span>
                       <input
-                        className="input"
+                        className="input form-control"
                         type="password"
                         placeholder="Password"
                         onChange={handlePasswordChange}

@@ -77,9 +77,9 @@ const Receipt = ({
                     <p>{values.enteredQuantity}</p>
                     <p>{values.enteredAmount}</p>
                     <p className=" text-center ">
-                      {isNaN(totalAmountForProduct)
+                      {isNaN(totalAmount)
                         ? '0.00'
-                        : ` #${totalAmountForProduct.toFixed(2)}`}
+                        : ` #${totalAmount.toFixed(2)}`}
                     </p>
                   </div>
                 </li>

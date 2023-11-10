@@ -44,21 +44,46 @@ const Invoicer = () => {
   const dropdownData = [
     {
       title: "Profile Settings",
-      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
+      items: [
+        {
+          item: "Create Profile",
+          linkTo: "/invoicer/profile",
+        },
+        {
+          item: "Update Profile",
+          linkTo: "/invoicer/home",
+        },
+        {
+          item: "Update Profile",
+          linkTo: "/invoicer/home",
+        },
+        {
+          item: "Update Profile",
+          linkTo: "/invoicer/home",
+        },
+        {
+          item: "Update Profile",
+          linkTo: "/invoicer/home",
+        },
+      ],
     },
     {
       title: "Profile Settings",
-      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
+      items: [
+        {
+          item: "Create Profile",
+          linkTo: "/invoicer/settings",
+        },
+        {
+          item: "Update Profile",
+          linkTo: "/invoicer/home",
+        },
+        {
+          item: "Sign In",
+          linkTo: "/",
+        },
+      ],
     },
-    {
-      title: "Profile Settings",
-      items: ["Create Profile", "Update Profile", "Delete Profile", "Item 4"],
-    },
-    {
-      title: "Profile Menu 2",
-      items: ["Item A", "Item B"],
-    },
-    // Add more dropdown data as needed
   ];
 
   return (
@@ -151,8 +176,12 @@ const Invoicer = () => {
                       }`}
                     >
                       {dropdown.items.map((item, itemIndex) => (
-                        <NavLink key={itemIndex} className="p-3">
-                          {item}
+                        <NavLink
+                          key={itemIndex}
+                          to={item.linkTo}
+                          className="p-3"
+                        >
+                          {item.item}
                         </NavLink>
                       ))}
                     </div>

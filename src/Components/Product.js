@@ -1,43 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Description = ({ onFormSubmit, onDelete }) => {
-  const [enteredProducts, setEnteredProducts] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredQuantity, setEnteredQuantity] = useState('');
+  const [enteredProducts, setEnteredProducts] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredQuantity, setEnteredQuantity] = useState("");
 
   // Retrieve values from localStorage on component mount
-  useEffect(() => {
-    const storedProducts = localStorage.getItem('enteredProducts');
-    const storedAmount = localStorage.getItem('enteredAmount');
-    const storedQuantity = localStorage.getItem('enteredQuantity');
+  // useEffect(() => {
+  //   const storedProducts = localStorage.getItem('enteredProducts');
+  //   const storedAmount = localStorage.getItem('enteredAmount');
+  //   const storedQuantity = localStorage.getItem('enteredQuantity');
 
-    if (storedProducts) {
-      setEnteredProducts(storedProducts);
-    }
-    if (storedAmount) {
-      setEnteredAmount(storedAmount);
-    }
-    if (storedQuantity) {
-      setEnteredQuantity(storedQuantity);
-    }
-  }, []);
+  //   if (storedProducts) {
+  //     setEnteredProducts(storedProducts);
+  //   }
+  //   if (storedAmount) {
+  //     setEnteredAmount(storedAmount);
+  //   }
+  //   if (storedQuantity) {
+  //     setEnteredQuantity(storedQuantity);
+  //   }
+  // }, []);
 
   const descriptionInputHandler = (e) => {
     const value = e.target.value;
     setEnteredProducts(value);
-    localStorage.setItem('enteredProducts', value); // Store in localStorage
+    localStorage.setItem("enteredProducts", value); // Store in localStorage
   };
 
   const amountChangeHandler = (e) => {
     const value = e.target.value;
     setEnteredAmount(value);
-    localStorage.setItem('enteredAmount', value); // Store in localStorage
+    localStorage.setItem("enteredAmount", value); // Store in localStorage
   };
 
   const quantityChangeHandler = (e) => {
     const value = e.target.value;
     setEnteredQuantity(value);
-    localStorage.setItem('enteredQuantity', value); // Store in localStorage
+    localStorage.setItem("enteredQuantity", value); // Store in localStorage
   };
 
   const submitHandler = (e) => {
@@ -45,11 +45,17 @@ const Description = ({ onFormSubmit, onDelete }) => {
     onFormSubmit({ enteredProducts, enteredAmount, enteredQuantity });
   };
   const cancelStyle = {
-    color:'red'
-  }
+    color: "red",
+  };
 
   return (
-    <form className="flex flex-col mt-3  gap-3" onKeyUp={submitHandler} onInput={submitHandler} onBlur={submitHandler} onFocus={submitHandler}>
+    <form
+      className="flex flex-col mt-3  gap-3"
+      onKeyUp={submitHandler}
+      onInput={submitHandler}
+      onBlur={submitHandler}
+      onFocus={submitHandler}
+    >
       <div className="flex flex-col gap-2 w-100">
         <textarea
           type="text"

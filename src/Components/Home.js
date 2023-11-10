@@ -63,10 +63,9 @@ const Home = () => {
   }, [customerName, address, paymentMethod]);
   // console.log(paymentMethod);
 
-  
-    const handleHideInvoice = () => {
-      setShowInvoice(false);
-    };
+  const handleHideInvoice = () => {
+    setShowInvoice(false);
+  };
   return (
     <>
       {showInvoice ? (
@@ -83,7 +82,7 @@ const Home = () => {
           {/* <Navbar /> */}
           <div className="flex justify-center items-center h-fit flex-col  m-[5%]">
             <div className="text-xl font-bold w-100 ">NEW RECEIPT</div>
-            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:mt-[30%] sm:mt-[10%]  lg:w-2/3 bg-slate-    md:rounded-3xl">
+            <div className="flex flex-col gap-2 p-[5%] w-full  h-full xs:mt-[30%] m:mt-[10%]   lg:w-2/3 bg-slate-    md:rounded-3xl">
               {/* ... (Company and Customer input fields) */}
               <div className="flex flex-col bg--200 rounded-md w-full gap-2">
                 <p className="text-lg font-extrabold  tracking-wider  font-">
