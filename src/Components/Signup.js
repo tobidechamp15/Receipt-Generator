@@ -16,16 +16,15 @@ function Signup() {
   const [signUpError, setSignUpError] = useState("");
   const navigate = useNavigate();
 
-
   const handleOnChange = (e) => {
-    setErrors({})
-    setSignUpError(null)
+    setErrors({});
+    setSignUpError(null);
     setInput({ ...input, [e.target.id]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-        const validationErrors = {};
+    const validationErrors = {};
 
     if (!input.username.trim()) {
       validationErrors.username = "Username is required";
@@ -38,17 +37,16 @@ function Signup() {
     }
 
     if (!input.password.trim()) {
-      validationErrors.password = "password is required";
+      validationErrors.password = "Password is required";
     } else if (input.password.length < 6) {
       validationErrors.password = "password should be at least 6 characters";
     }
     setErrors(validationErrors);
-    
+
     if (Object.keys(validationErrors).length === 0) {
-      
       try {
         setLoader(true);
-        await axiosInstance.post("/auth/signup", input).then((res) => {
+        await axiosInstance.post("/signup", input).then((res) => {
           console.log(res.data);
           setInput(res.data);
           navigate("/");
@@ -57,15 +55,14 @@ function Signup() {
       } catch (err) {
         console.log(err);
         if (err.response && err.response.status === 400) {
-          setSignUpError("User already exists")
-          
+          setSignUpError("User already exists");
         }
       } finally {
         setLoader(false);
       }
     }
   };
- 
+
   return (
     <>
       {loading ? (
@@ -125,13 +122,13 @@ function Signup() {
                         }`}
                         role="alert"
                       >
-                        <strong className="font-bold">Error:  </strong>
+                        <strong className="font-bold">Error: </strong>
                         {signUpError}
                       </div>
                       <input
                         value={input.email}
                         id="email"
-                        className="input"
+                        className="input form-control"
                         type="text"
                         placeholder="Enter email"
                         autoComplete="current-password"
@@ -149,7 +146,7 @@ function Signup() {
                       <input
                         value={input.password}
                         id="password"
-                        className="input"
+                        className="input form-control"
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"

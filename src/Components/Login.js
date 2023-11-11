@@ -35,7 +35,7 @@ const Login = () => {
 
     // Make a POST request to your API
     axiosInstance
-      .post("auth/signIn", { email, password })
+      .post("/signIn", { email, password })
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
