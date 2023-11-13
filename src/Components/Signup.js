@@ -29,13 +29,11 @@ function Signup() {
     if (!input.username.trim()) {
       validationErrors.username = "Username is required";
     }
-
     if (!input.email.trim()) {
       validationErrors.email = "Email is required";
     } else if (/\S+@\S\.\S+/.test(input.email)) {
       validationErrors.email = "Email is not valid";
     }
-
     if (!input.password.trim()) {
       validationErrors.password = "Password is required";
     } else if (input.password.length < 6) {
