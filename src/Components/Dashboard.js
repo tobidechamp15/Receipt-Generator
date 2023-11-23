@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -10,6 +10,41 @@ import {
 import { faUser, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
+  const [userData, setUserData] = useState([]);
+
+  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const loggedInUser = localStorage.getItem("userId");
+        const isLoggedIn = !!loggedInUser;
+
+        console.log(userId);
+        if (userId) {
+          const response = await fetch(
+            `https://myreceipt.onrender.com/api/auth/getUsers`,
+            {
+              method: "GET",
+              headers: {},
+            }
+          );
+          const data = await response.json();
+          console.log(data); // Just an example of what you can do with the response data
+          const user = data.id;
+          data.map((user) => {
+            if (user._id === loggedInUser) {
+              setUserData(user);
+              console.log(user);
+            }
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUser();
+  }, []);
   return (
     <div className="bg-gray-200 py-3 h-full">
       <span className="text-blue-400 m-3 my-3 font-bold text-xl">
@@ -33,8 +68,14 @@ const Dashboard = () => {
           <span>+232 4334 2343</span>
         </div>
         <div className="flex  xs:flex-col">
+          <span className="w-[120px]">Username :</span>
+          <span className="font-semibold text-gray-500">
+            {userData.username}
+          </span>
+        </div>
+        <div className="flex  xs:flex-col">
           <span className="w-[120px]">Email :</span>
-          <span>Demoem232@gmail.com</span>
+          <span className="font-semibold text-gray-500">{userData.email}</span>
         </div>
         <div className="flex  xs:flex-col">
           <span className="w-[120px]">Plan :</span>

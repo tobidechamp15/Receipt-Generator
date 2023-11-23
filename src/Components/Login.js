@@ -39,11 +39,13 @@ const Login = () => {
       .then((response) => {
         // Handle a successful response from the API
         console.log(response.data);
+        localStorage.setItem("userId", response.data.userId);
         navigate("/invoicer/profile");
         // setSuccessMessage("Login successful"); // Set a success message if needed
       })
       .catch((error) => {
         // Handle errors from the API
+        setEmailError("Invalid credentials");
         console.log("error is supposed to be displayed here");
         console.error("Error:", error);
         setError("Login failed"); // Set an error message if needed
