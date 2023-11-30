@@ -29,12 +29,12 @@ const Dashboard = () => {
             }
           );
           const data = await response.json();
-          console.log(data); // Just an example of what you can do with the response data
+          // console.log(data); // Just an example of what you can do with the response data
           const user = data.id;
           data.map((user) => {
             if (user._id === loggedInUser) {
               setUserData(user);
-              console.log(user);
+              // console.log(user)
             }
           });
         }
@@ -56,17 +56,14 @@ const Dashboard = () => {
           className="bg-gray-300 p-3 rounded-[50%] text-[70px] w-fit mx-3"
         />
         <div className="flex flex-col ">
-          <span className="text-xl font-bold">Company Name</span>
+          <span className="text-xl font-bold">{userData.username}</span>
           <section className="text-lg text-blue-400 gap-2 flex items-center">
             <FontAwesomeIcon icon={faLocationDot} />
             <span className="">Address</span>
           </section>
         </div>
         <hr />
-        <div className="flex  xs:flex-col">
-          <span className="w-[120px]">Mobile :</span>
-          <span>+232 4334 2343</span>
-        </div>
+
         <div className="flex  xs:flex-col">
           <span className="w-[120px]">Username :</span>
           <span className="font-semibold text-gray-500">

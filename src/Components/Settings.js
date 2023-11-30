@@ -3,10 +3,9 @@ import "./Signup.css";
 import "./Login.css";
 
 const Settings = () => {
-  
   const handleSubmit = () => {
-    alert('Your Profile has been created')
-  }
+    alert("Your Profile has been created");
+  };
   return (
     <div className="w-100 flex justify-center">
       <div className="boxShadow control bg-white p-[5%] m-[5%] sm:w-1/2 xs:w-full md:w-[70%] lg:w-[70%] xl:w-[50%]">
@@ -52,6 +51,9 @@ const Settings = () => {
               placeholder="Enter Company Phone Number"
               required
             />
+          </div>
+          <div>
+            <input type="file" accept=".png, .jpg, .jpeg" id="" />
           </div>
           <button
             type="submit"

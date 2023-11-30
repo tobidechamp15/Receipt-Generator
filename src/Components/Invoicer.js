@@ -46,7 +46,7 @@ const Invoicer = () => {
       title: "Profile Settings",
       items: [
         {
-          item: "Create Profile",
+          item: "Admin",
           linkTo: "/invoicer/profile",
         },
         {
